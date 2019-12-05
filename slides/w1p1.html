@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Welcome!</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Anderson" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/uo.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/uo-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Welcome!
+## An overview of the course
+### Daniel Anderson
+### Week 1, Class 1
+
+---
+
+
+# Agenda 
+
+* Getting on the same page
+* Syllabus
+* A little bit of git/GitHub
+
+---
+background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201802/Syllabus-featured.jpeg?rpmIvNBBqGMDT7lPG.Qe4AzWs6OfDh9K)
+class: inverse bottom
+background-size:cover
+
+# Syllabus
+
+---
+# Course Website(s)
+
+* [website](https://uo-datasci-specialization.github.io/c2-dataviz-2020/)
+* [repo](https://github.com/uo-datasci-specialization/c2-dataviz-2020)
+
+&lt;iframe src="https://uo-datasci-specialization.github.io/c2-dataviz-2020/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+
+---
+# I assume you:
+1. Understand the R package ecosystem (how to find, install, load, and learn about them)
+
+--
+1. Can read "flat" (i.e., rectangular) datasets into R 
+  + I don't care what you use, but you should be using RStudio Projects &amp; I
+    highly recommend [{here}](https://github.com/r-lib/here)
+    - See [Jenny Bryan's blog post](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) for why.
+
+--
+1. Can perform basic data wrangling and transformations in R, using the
+tidyverse
+  + Leverage appropriate functions for introductory data science tasks (pipeline)
+  + "clean up" the dataset using scripts and reproducible workflows
+
+--
+1. Use version control with R via git and GitHub 
+  + .gray[I am, of course, there will need to be some catching up here]
+
+--
+1. Use R Markdown to create reproducible dynamic reports
+
+
+---
+# Learning objects for this class
+
+* Transform data in a variety of ways to create effective data visualizations
+
+--
+
+* Understand and fluently apply different types of data joins
+
+--
+
+* Customize ggplot2 graphics by reordering factors, creating themes, and applying ggthemes
+
+--
+
+* Create reproducible slides using ioslides/xaringan
+
+--
+
+* Create an online data visualization portfolio using radix and/or flexdashboards to demonstrate key learning 
+
+
+---
+# Weekly learning objectives
+
+Provide you a frame for what you should be working to learn for that specific week.
+
+--
+
+### This week's objectives
+* Understand the requirements of the course
+* Understand the requirements of the final project
+* Be ready to go with *git* and GitHub
+
+
+---
+# Required Textbooks (free)
+
+.pull-left[
+Healy (http://socviz.co)
+
+&lt;div&gt;
+&lt;img src = http://socviz.co/assets/dv-cover-pupress.jpg height = 400&gt;
+&lt;/div&gt;
+
+]
+
+.pull-right[
+Wilke (https://serialmentor.com/dataviz/)
+
+&lt;div&gt;
+&lt;img src =
+http://t1.gstatic.com/images?q=tbn:ANd9GcSKmL1jCuh8rAxHEvGdd80_6GENytaUjiP7YEWGsiRFF_yta-18 height = 400&gt; &lt;/div&gt;
+
+
+]
+
+
+---
+# Other books (also free)
+
+.pull-left[
+Bryan (http://happygitwithr.com)
+
+&lt;iframe src="http://happygitwithr.com" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+
+.pull-right[
+Wickham &amp; Grolemund (https://r4ds.had.co.nz)
+&lt;div&gt;
+&lt;img src =https://d33wubrfki0l68.cloudfront.net/b88ef926a004b0fce72b2526b0b5c4413666a4cb/24a30/cover.png height = 400&gt; &lt;/div&gt;
+
+]
+
+---
+# DataCamp
+* Everyone should have received a datacamp invite this morning. Contact me if
+not.
+* Great platform for supplemental learning. 
+* We'll use it as part of your homework
+
+.pull-left[
+![](img/dc_flashcards.png)
+]
+
+.pull-right[
+![](img/dc_topics.png)
+]
+
+---
+# Two required modules
+
+5 points each
+
+### Due before class next week
+* [Data Visualization with ggplot2 (Part 1)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1)
+
+### Due before class, January 21st
+* [Visualization Best Practices in R](https://www.datacamp.com/courses/visualization-best-practices-in-r)
+
+---
+# Two elective modules
+
+5 points each
+
+### Pick two
+
+|   |     |
+|:--|:----|
+|[Data Visualization with ggplot2 (2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-2)| [Working with Geospatial Data in R](https://www.datacamp.com/courses/working-with-geospatial-data-in-r)|
+|[Data Visualization with ggplot2 (3)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-3) | [Interactive Maps with leaflet in R](https://www.datacamp.com/courses/interactive-maps-with-leaflet-in-r)|
+|[Data Visualization in R](https://www.datacamp.com/courses/data-visualization-in-r)| [Visualizing Time Series Data in R](https://www.datacamp.com/courses/visualizing-time-series-data-in-r)|
+|[Data Visualization in R with ggvis](https://www.datacamp.com/courses/ggvis-data-visualization-r-tutorial)| [Communicating with Data in the Tidyverse](https://www.datacamp.com/courses/communicating-with-data-in-the-tidyverse)|
+|[Interactive Data Visualization with plotly in R](https://www.datacamp.com/courses/interactive-data-visualization-with-plotly-in-r)| [Network Science in R - A Tidy Approach](https://www.datacamp.com/courses/network-science-in-r-a-tidy-approach)|
+|[Interactive Data Visualization with rbokeh](https://www.datacamp.com/courses/interactive-data-visualization-with-rbokeh)| [Visualizing Big Data with Trelliscope](https://www.datacamp.com/courses/visualizing-big-data-with-trelliscope)|
+
+---
+# Extra credit opportunities
+* 5 points: Do one extra DataCamp module (one of the electives, or get approval
+  for a different one)
+* 10 points: Deep dive into a topic not covered by the course
+
+
+--
+### Some options for 2 
+.gray[We'll talk about this more in a minute]
+* Geographic data
+* Network data
+* Flow data (alluvial diagrams)
+* Relational data (SQL &amp; friends)
+* Interactive plots
+* Animated plots
+* Text data, text nets
+
+
+---
+# Lab Schedule
+
+5 points each (30 points total; 15%)
+
+1. GitHub collabo (**Assigned: 1/9/19**; **Due: 1/14/19**)
+
+1. Mapping data to aesthetics (**Assigned: 1/16/19**; **Due: 1/21/19**)
+
+    **Homework 1**
+
+1. Visual perception (**Assigned: 1/30/19**; **Due: 2/4/19**)
+
+1. Color (**Assigned: 2/6/19**; **Due: 2/11/19**)
+
+    **Homework 2**
+
+1. Tables/Uncertainty (**Assigned: 2/20/19**; **Due: 2/25/19**)
+
+1. Sharing &amp; Web deployment (**Assigned:2/27/19**; **Due: 3/4/19**)
+
+
+---
+# Homework
+10 points each (20 points; 10%)
+
+* Basically the same as the labs, but scored correct/incorrect, and no in-class
+  time devoted to them.
+
+* Okay to work on collaboratively - I actively encourage you to do so as long as
+  you're using a shared repo
+
+
+--
+First will be focused on joins and basically relational data (with visualizations built in)
+
+Second will ask you to reproduce some data visualizations "in the wild" with publicly available data.
+
+
+---
+# Final Project 
+120 points total (60%)
+
+6 parts:
+* Proposal (10 points): Due 2/6/19
+* Draft (15 points): Due 2/27/19
+* Peer review (15 points): Assigned, 2/27/19; Due 3/6/19
+* Presentation (20 points): 3/11/19 and 3/13/19 (Week 10)
+* Product (60 points): Due 11:59:59 PM, 3/20/19
+
+
+---
+# Product
+
+Four components: 
+
+* A web-deployed portfolio showcasing your [#dataviz](https://twitter.com/search?q=%23DataViz&amp;src=tyah)
+  skills.
+  + [radix](https://rstudio.github.io/radix/) (what I'll lecture on), 
+    [R Markdown](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html), or
+    [blogdown](https://bookdown.org/yihui/blogdown/) website
+  + Technical document with [pagedown](https://github.com/rstudio/pagedown) or
+    [bookdown](https://bookdown.org/yihui/bookdown/)
+  + Scientific poster with [pagedown](https://github.com/rstudio/pagedown)
+  + [flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/)
+* At least three finalized data displays, with each accompanied by a strong 
+  narrative/story, as well as the history of how the visualization changed over 
+  time.
+* Housed on GitHub
+  + Fully reproducible
+* Deployed through [GitHub pages](https://pages.github.com) or 
+  [netlify](https://www.netlify.com).
+
+
+---
+# Proposal
+
+Four components:
+* Description of the data source (**must** be publicly available)
+* Preliminary ideas (even hand sketches) of different visualizations
+* Identification of the intended audience for each visualization 
+  + Note, you might consider displaying the same data/relations more than 
+    once, with each plot displayed for a different audience.
+* The intended message to be communicated for each plot. 
+
+---
+# Draft
+* Expected to still be a work in progress
+  + Data visualizations should be largely complete
+* Deployment not expected
+* Provided to your peers so they can learn from you as much as you can learn 
+  from their feedback
+
+---
+# Peer Review
+* We are all professionals here. It is imperative we act like it. 
+* Understand the purpose of the exercise.  
+* Zero tolerance policy for inappropriate comments
+* Should be vigorously encouraging 
+
+
+--
+### Utilizing GitHub
+* You'll be assigned three proposals to review (5 points each)
+* Fork their repo
+* Embed comments, suggest changes to their code
+* Submit a PR
+  + Summarize your overall review in the PR
+
+---
+# Presentation 
+Order randomly assigned. Basically a chance to share what you created!
+
+* Discuss what is trying to be communicated
+* Share the final products
+* Discuss the progression along the way and why specific changes were made
+
+
+---
+# Grading
+200 points total
+* 6 labs at 5 points each (30 points; 15%) 
+* 2 homework assignments at 10 points each (20 points; 10%) 
+* 4 DataCamp modules at 5 points each (20 points; 10%) 
+* five-minute data visualization "in the wild" presentation (10 points; 5%) 
+* Final Project (120 points; 60%)
+  + Proposal (10 points; 5%)
+  + Draft (15 points; 7.5%)
+  + Peer review (15 points; 7.5%)
+  + Presentation (20 points; 10%)
+  + Product (60 points; 30%)
+
+
+---
+# Grading
+
+|  **Lower percent** |**Lower point range**  | **Grade** | **Upper point range**  | **Upper percent**|
+|  :------: | :------   | :-:| :-------: | ----:|
+|  0.97     | (194 pts) | A+ |           |      |
+|  0.93     | (186 pts) | A  | (194 pts) | 0.97 |
+|  0.90     | (180 pts) | A- | (186 pts) | 0.93 |
+|  0.87     | (174 pts) | B+ | (180 pts) | 0.90 |
+|  0.83     | (166 pts) | B  | (174 pts) | 0.87 |
+|  0.80     | (160 pts) | B- | (166 pts) | 0.83 |
+|  0.77     | (154 pts) | C+ | (160 pts) | 0.80 |
+|  0.73     | (146 pts) | C  | (154 pts) | 0.77 |
+|  0.70     | (140 pts) | C- | (146 pts) | 0.73 |
+|           |           | F  | (140 pts) | 0.70 |
+
+---
+class: inverse
+background-image:url(https://d194ip2226q57d.cloudfront.net/original_images/10_Tips_for_Workplace_Communication)
+background-size:contain
+
+---
+# Missing classes
+# 😬
+I will be out .bolder[all] of next week! 
+* Trying desperately to get a guest speaker - most people I can think of will be at the conference with me.
+* May end up just having to have you do the readings and work on a take-home lab
+
+
+--
+### February 6
+* I will also be out February 6 (but should be able to be here on the 4th)
+* I *think* I have a guest lecture lined up for that day, who will guide you through the lab.
+
+
+---
+class: inverse center middle
+background-image:url(https://cdn-images-1.medium.com/max/1600/1*aFHTAkhTkyWD93-UGRttPw.png)
+background-size:contain
+
+---
+# Demo
+* Creating a GitHub repo
+* Sharing access (or creating an organization)
+* Cloning the repo
+* stage, commit, push
+* pull
+* forking and issues
+* The [gitkraken](https://www.gitkraken.com) GUI
+
+
+---
+class:inverse middle center
+
+# Next time
+
+### Collaborating with GitHub lab
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "atelier-dune-light",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
