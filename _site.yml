@@ -11,7 +11,7 @@ navbar:
   - text: Syllabus
     href: site-syllabus.html
   - icon: fa-github
-    href: https://github.com/uo-datasci-specialization/c2-communicate_transform_data
+    href: https://github.com/uo-datasci-specialization/c2-dataviz-2020
 output:
   html_document:
     theme: journal
