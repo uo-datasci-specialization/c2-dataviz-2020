@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Syllabus</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<script src="highlight-custom.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">EDUC 610</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="schedule.html">Slides, Readings, &amp; Schedule</a>
+</li>
+<li>
+  <a href="assignments.html">Assignments</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="site-syllabus.html">Syllabus</a>
+</li>
+<li>
+  <a href="https://github.com/uo-datasci-specialization/c2-communicate_transform_data">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Syllabus</h1>
+
+</div>
+
+
+<div id="edld-610-communicating-and-transforming-data-crn-27120-3-credit-hours" class="section level2">
+<h2>EDLD 610: Communicating and Transforming Data (CRN: 27120; 3 credit hours)</h2>
+<ul>
+<li><strong>Term:</strong> Winter 2020</li>
+<li><strong>Time:</strong> M/W, 10-11:20</li>
+<li><strong>Classroom:</strong> Lokey 115</li>
+<li><strong>Instructor:</strong> Daniel Anderson, PhD
+<ul>
+<li><em>email:</em> (preferred contact method) <a href="mailto:daniela@uoregon.edu">daniela@uoregon.edu</a></li>
+<li><em>phone:</em> 541-346-3317</li>
+<li><em>office:</em> 175 Lokey</li>
+<li><em>office hours</em>: By appointment</li>
+<li><em>pronouns:</em> he/him/his</li>
+</ul></li>
+</ul>
+</div>
+<div id="course-overview" class="section level1">
+<h1>Course Overview</h1>
+<p>This is the second course in a sequence of courses that will eventually lead to an <em>educational data science</em> specialization. This course will be taught through <a href="https://cran.r-project.org">R</a>, a free and open-source statistical computing environment. This course will give students a foundation in the principles and practice of data visualization, particularly as applied to scientific and technical data. We will have weekly lectures, covering a wide variety of topics including human perception, color theory, principles of visual design, etc. We will also have weekly hands-on laboratory sessions in which students will have the opportunity to put the lecture material into practice. Often when creating effective data visualizations, it is necessary to combine and transform different data sources, and this will be a considerable focus of the course as well.</p>
+<div id="student-learning-objectives" class="section level2">
+<h2>Student Learning objectives</h2>
+<p>By the end of this course, students should be able to:</p>
+<ul>
+<li>Transform data in a variety of ways to create effective data visualizations</li>
+<li>Understand and fluently apply different types of data joins</li>
+<li>Customize graphics in a variety of ways (e.g., color choices, text annotations, categorical axis ordering)</li>
+<li>Create an online data visualization portfolio</li>
+</ul>
+</div>
+</div>
+<div id="course-readings" class="section level1">
+<h1>Course Readings</h1>
+<p>All course readings are freely available online or will be provided by the instructor.</p>
+<div id="books-required" class="section level2">
+<h2>Books (required)</h2>
+<ul>
+<li>Jenny Bryan, <a href="http://happygitwithr.com">Happy git with R</a>.</li>
+<li>Kieran Healy, <a href="http://socviz.co/">Data Visualization: A Practical Introduction.</a> Forthcoming. Princeton University Press.</li>
+<li>Claus Wilke, <a href="https://serialmentor.com/dataviz/">Fundamentals of Data Visualization.</a> Forthcoming. O’Reilly.</li>
+</ul>
+<p>We will also have select readings from * Hadley Wickham &amp; Garrett Grolemund, <a href="https://r4ds.had.co.nz">R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</a></p>
+</div>
+</div>
+<div id="assignments-and-grading" class="section level1">
+<h1>Assignments and Grading</h1>
+<p>Your final grade will be composed of five components:</p>
+<ul>
+<li>5 labs at 6 points each (30 points; 15%)</li>
+<li>2 homework assignments at 20 points each (40 points; 10%)</li>
+<li>five-minute data visualization “in the wild” presentation (10 points; 5%)</li>
+<li>Final Project (120 points; 60%)
+<ul>
+<li>Proposal (10 points; 5%)</li>
+<li>Draft (15 points; 7.5%)</li>
+<li>Peer review (15 points; 7.5%)</li>
+<li>Presentation (20 points; 10%)</li>
+<li>Product (60 points; 30%)</li>
+</ul></li>
+</ul>
+<div id="labs-30-points-15" class="section level2">
+<h2>Labs (30 points; 15%)</h2>
+<p>There are 5 labs during the course, scored at 6 points each, which must be submitted within one week of being assigned. Labs will include designated in-class time, but any work not completed during class must be completed on your own. Labs will be scored on a “best honest effort” basis, which generally implies zero or full credit (i.e.,the assignment was or was not fully completed). However, many of the labs require students complete specific portions before moving on to the next sections. If you find yourself stuck and unable to proceed, <strong>please contact the instructor for help rather than submitting incomplete work</strong>. Contacting the instructor is part of the “best honest effort”, and can result in full credit for an assignment even if the the work is not fully complete. <strong>If the assignment is not complete, and the student has not contacted the instructor for help, it is likely to result is a score of zero</strong>.</p>
+</div>
+<div id="homework-40-points-20" class="section level2">
+<h2>Homework (40 points; 20%)</h2>
+<p>Homework assignments are essentially extended labs, with two exceptions: (1) No time will be designated during class to homework completion, and (2) homework will be scored on a correct/incorrect basis. Two homework will be assigned, each worth up to 20 points.</p>
+</div>
+<div id="data-visualizations-in-the-wild-presentation-10-points-5" class="section level2">
+<h2>Data visualizations “in the wild” presentation (10 points; 5%)</h2>
+<p>On the first day of the class you will be randomly assigned a date for a presentation.</p>
+<p>Presentations will start with the second meeting of class. The assignment requires:</p>
+<ul>
+<li>Identifying two data visualizations intended for different audiences (e.g., scientific community, popular culture, data users [teachers/educators, etc.])</li>
+<li>Sharing the data visualizations with the class, and discussing the following:
+<ul>
+<li>What is trying to be communicated?</li>
+<li>How effective do you judge the visualization at communicating the content? Why?</li>
+<li>At least one area of strength.</li>
+<li>At least one potential area for improvement.</li>
+</ul></li>
+</ul>
+<p>Note that this project is aimed at identifying a range of data visualizations. It would be ideal if both model data visualizations and poor data visualizations were presented from a variety of sources. Your two visualizations <strong>must</strong> be aimed at separate audiences.</p>
+</div>
+<div id="final-project-120-points-60" class="section level2">
+<h2>Final Project (120 points; 60%)</h2>
+<p>The final project will include a portfolio of your data visualizations. At least <strong>three</strong> different data visualizations must be included, as well as the history of how the visualization changed over time. Among these three visualizations, at least one continuous variable and one categorical variable must be included. The portfolios must be housed on <em>GitHub</em> and be reproducible. In occasional situations, it can be helpful to make final modifications to your plot through systems outside of R (e.g., Adobe Illustrator, Inkscape). If you choose to make these modifications (not required) they are the one (and only) acceptable exception to full reproducibility.</p>
+<div id="proposal-10-points-5-due-february-5" class="section level3">
+<h3>Proposal (10 points; 5%; <strong>Due February 5</strong>)</h3>
+<p>At the end of Week 5, you must include a proposal of your data visualization portfolio that includes the following:</p>
+<ul>
+<li>Description of the data source (must be publicly available)</li>
+<li>Preliminary ideas (even hand sketches) of different visualizations</li>
+<li>Identification of the intended audience for each visualization
+<ul>
+<li>Note, you might consider displaying the same data/relations more than once, with each plot displayed for a different audience.</li>
+</ul></li>
+<li>The intended message to be communicated for each plot.</li>
+</ul>
+</div>
+<div id="portfolio-draft-15-points-7.5-due-february-26" class="section level3">
+<h3>Portfolio draft (15 points; 7.5%; <strong>Due February 26</strong>)</h3>
+<p>By the end of Week 8, you should have a fairly complete draft of the data visualizations you will be sharing in your portfolio. These should be housed on GitHub and ready to receive feedback from your peers.</p>
+</div>
+<div id="peer-review-15-points-7.5-due-march-4" class="section level3">
+<h3>Peer review (15 points; 7.5%; <strong>Due March 4</strong>)</h3>
+<p>You will be assigned to three of your peers code for their data visualizations. The purpose of this exercise is to learn from each other. Programming is an immensely open-ended enterprise and there are lots of winding paths that all ultimately end up at the same destination. In terms of visualization, there is certainly plenty of room for artistic license, but certain design decisions (as we will learn) can lead to more interpretable and better data communication. Thus, peer review is a chance to not only learn from others, but get feedback on your (expected to be in-progress) design decisions.</p>
+<p>During your peer review, you must note (a) at least three areas of strength, (b) at least one thing you learned from reviewing their script, and (c) at least one and no more than three areas for improvement for each visualization. <strong>The peer review should include comments on both the code leading up to the visualization, and the visualization itself</strong>.</p>
+<p>Making your code publicly available can feel daunting. The purpose of this portion of the final project is to help us all learn from each other, not to denigrate. <strong>Under no circumstances will negative comments be tolerated</strong>. Any comments that could be perceived as negative, and outside the scope of the code, will result in an immediate score of zero. Be constructive in your feedback. Be kind. We are all learning.</p>
+</div>
+<div id="presentation-20-points-10" class="section level3">
+<h3>Presentation (20 points; 10%)</h3>
+<p>Week 10 will include each student sharing their portfolio with the class.</p>
+<p>I encourage you to present using HTML slides produced via R Markdown (specifically <a href="https://bookdown.org/yihui/rmarkdown/xaringan.html">xaringan</a>), but this is not required.</p>
+<p><strong>Prior to the start of Week 10</strong> please send me a link to your published presentation. I will then pre-load all the presentations in different tabs on my computer.</p>
+<p>You will have approximately five minutes to share your portfolio (the amount of time will vary depending on the enrollment of the class). Please cover the following:</p>
+<ul>
+<li>Briefly show each visualization</li>
+<li>Pick 1-2 to go more in-depth, and discuss
+<ul>
+<li>Intended audience</li>
+<li>Design choices, e.g. 
+<ul>
+<li>Colors</li>
+<li>Layout</li>
+<li>Choice of specific type of plot</li>
+</ul></li>
+<li>Prior version(s) and how the changes helped clarity, communication, beauty, etc.</li>
+<li>At least 1 major challenge encountered along the way</li>
+<li>At least 1 major victory</li>
+</ul></li>
+</ul>
+</div>
+<div id="product-60-points-30" class="section level3">
+<h3>Product (60 points; 30%)</h3>
+<p>The final project must include</p>
+<ul>
+<li>A web-deployed portfolio showcasing your <a href="https://twitter.com/search?q=%23DataViz&amp;src=tyah">#dataviz</a> skills.
+<ul>
+<li><a href="https://rstudio.github.io/radix/">radix</a> <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R Markdown</a> or <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> website</li>
+<li>Technical document with <a href="https://github.com/rstudio/pagedown">pagedown</a> or <a href="https://bookdown.org/yihui/bookdown/">bookdown</a></li>
+<li>Scientific poster with <a href="https://github.com/rstudio/pagedown">pagedown</a></li>
+<li><a href="https://rmarkdown.rstudio.com/flexdashboard/">flexdashboard</a></li>
+</ul></li>
+<li>At least three finalized data displays, with each accompanied by a strong narrative/story, as well as the history of how the visualization changed over time.</li>
+</ul>
+<p>You must show iterations of your data displays, highlighting how they evolved over time and why you made the specific changes you did. If you go the website route, a blog post showing your visualizations and their evolution would work great. Dashboards similarly have built in mechanisms to help show the history of plot.</p>
+<p>The final project is required to be housed on GitHub and be fully reproducible. It will be graded on the following three criteria:</p>
+<ul>
+<li>At least three different visualizations (30 points; 10 points each)
+<ul>
+<li>Design choices</li>
+<li>Plot appropriate for given audience</li>
+<li>Evolution of the plot is clear</li>
+</ul></li>
+<li>Reproducibility (20 points)
+<ul>
+<li>Should be housed on GitHub</li>
+<li>I’ll clone and try to reproduce</li>
+</ul></li>
+<li>Deployment (10 points)
+<ul>
+<li>Should be shareable via a link</li>
+<li>No errors in the specific chosen format</li>
+<li>Clear, clean, easy to follow/understand</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="extra-credit" class="section level2">
+<h2>Extra Credit</h2>
+<p>There is one opportunity for extra credit, which is s worth up to 10 points, and is an in-depth self-study of a topic not explicitly covered in the class. Students opting into the extra credit option will provide a 10 minute presentation on their chosen topic to the class (presentations are likely to occur on lab days). For example, interactive and animated graphics are not explicitly covered, but newer packages like <a href="https://gganimate.com/index.html">gganimate</a> are powerful and fun. We also will only have a quick introduction to geographic mapping, and network data will not be covered at all. Any of these topics would be excellent choices for a presentation. You could also choose an area that is covered in the class, but provide greater depth (e.g., color). It is also important to keep in mind that this course is about communicating <strong>and</strong> transforming data, and so topics on data transformations would also be appropriate. For example, you may choose to present on integrating R with SQL databases. If you are interested in giving a 10 minute talk on a topic of your choice, please contact the instructor as soon as possible to obtain approval on the topic and set a date for the presentation.</p>
+</div>
+</div>
+<div id="grading-components-200-points-possible" class="section level1">
+<h1>Grading Components (200 points possible)</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong>Lower percent</strong></th>
+<th align="left"><strong>Lower point range</strong></th>
+<th align="center"><strong>Grade</strong></th>
+<th align="center"><strong>Upper point range</strong></th>
+<th align="right"><strong>Upper percent</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.97</td>
+<td align="left">(194 pts)</td>
+<td align="center">A+</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="center">0.93</td>
+<td align="left">(186 pts)</td>
+<td align="center">A</td>
+<td align="center">(194 pts)</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="center">0.90</td>
+<td align="left">(180 pts)</td>
+<td align="center">A-</td>
+<td align="center">(186 pts)</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="center">0.87</td>
+<td align="left">(174 pts)</td>
+<td align="center">B+</td>
+<td align="center">(180 pts)</td>
+<td align="right">0.90</td>
+</tr>
+<tr class="odd">
+<td align="center">0.83</td>
+<td align="left">(166 pts)</td>
+<td align="center">B</td>
+<td align="center">(174 pts)</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="even">
+<td align="center">0.80</td>
+<td align="left">(160 pts)</td>
+<td align="center">B-</td>
+<td align="center">(166 pts)</td>
+<td align="right">0.83</td>
+</tr>
+<tr class="odd">
+<td align="center">0.77</td>
+<td align="left">(154 pts)</td>
+<td align="center">C+</td>
+<td align="center">(160 pts)</td>
+<td align="right">0.80</td>
+</tr>
+<tr class="even">
+<td align="center">0.73</td>
+<td align="left">(146 pts)</td>
+<td align="center">C</td>
+<td align="center">(154 pts)</td>
+<td align="right">0.77</td>
+</tr>
+<tr class="odd">
+<td align="center">0.70</td>
+<td align="left">(140 pts)</td>
+<td align="center">C-</td>
+<td align="center">(146 pts)</td>
+<td align="right">0.73</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left"></td>
+<td align="center">F</td>
+<td align="center">(140 pts)</td>
+<td align="right">0.70</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="student-engagement-inventory" class="section level1">
+<h1>Student Engagement Inventory</h1>
+<p>Graduate: 1 credit hour = 40 hours of student engagement (3 credit hours = 120 hours of student engagement)</p>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="15%" />
+<col width="69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>Educational activity</strong></th>
+<th align="center"><strong>Hours student engaged</strong></th>
+<th align="left"><strong>Explanatory comments (if any):</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Course attendance</td>
+<td align="center">26.5</td>
+<td align="left">20 meetings, at 80 minutes per meeting</td>
+</tr>
+<tr class="even">
+<td align="left">Assigned readings</td>
+<td align="center">26.5</td>
+<td align="left">Weekly readings are assigned, and are expected to take roughly as long to complete as the in-seat time per week.</td>
+</tr>
+<tr class="odd">
+<td align="left">Projects</td>
+<td align="center">30</td>
+<td align="left">Final project, as described above</td>
+</tr>
+<tr class="even">
+<td align="left">Homework</td>
+<td align="center">37</td>
+<td align="left">6 Labs, at approximately one hour per lab spent out of class (6 hours), plus 4 DataCamp modules at approximately 5 hours per module, plus two homework assignments at approximately 5 hours each</td>
+</tr>
+<tr class="odd">
+<td align="left">Total hours:</td>
+<td align="center">120</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="attendance-and-absence-guidelines" class="section level1">
+<h1>Attendance and Absence Guidelines</h1>
+<p>Attendance at all class and discussion groups is expected and required, as described above.</p>
+<p>Students must contact the instructor in case of illness or emergencies that preclude attending class sessions. Messages can be left on the instructor’s voice mail or e-mail at any time of the day or night, prior to class. If no prior arrangements have been made before class time, the absence will be unexcused. Excused absences will involve make-up assignments, with make-up assignment procedures to be discussed in class on the first day.</p>
+<p>If you are unable to complete an assignment due to a personal and/or family emergency, you should contact your instructor or discussion leader as soon as possible. On a case-by-case basis, the instructor will determine whether the emergency qualifies as an excused absence.</p>
+</div>
+<div id="expected-classroom-behavior" class="section level1">
+<h1>Expected Classroom Behavior</h1>
+<p>Students are expected to participate in classroom activities. If use of digital devices or engagement in other non-class activities during class for purposes not regarding classroom activities is critically necessary, the student should engage in these activities while on break, or check with the instructor to arrange for a 10-minute break for unusual circumstances, but only if critically necessary.</p>
+</div>
+<div id="course-policies" class="section level1">
+<h1>Course Policies</h1>
+<div id="diversity-equity-and-inclusion" class="section level2">
+<h2>Diversity, Equity and Inclusion</h2>
+<p>It is the policy of the University of Oregon to support and value equity and diversity and to provide inclusive learning environments for all students. To do so requires that we:</p>
+<ul>
+<li>respect the dignity and essential worth of all individuals.</li>
+<li>promote a culture of respect throughout the University community.</li>
+<li>respect the privacy, property, and freedom of others.</li>
+<li>reject bigotry, discrimination, violence, or intimidation of any kind.</li>
+<li>practice personal and academic integrity and expect it from others.</li>
+<li>promote the diversity of opinions, ideas and backgrounds which is the lifeblood of the university.</li>
+</ul>
+<p>In this course, class discussions, projects/activities and assignments will challenge students to think critically about and be sensitive to the influence, and intersections, of race, ethnicity, nationality, documentation status, language, religion, gender, socioeconomic background, physical and cognitive ability, sexual orientation, and other cultural identities and experiences. Students will be encouraged to develop or expand their respect and understanding of such differences.</p>
+<p>Maintaining an inclusive classroom environment where all students feel able to talk about their cultural identities and experiences, ideas, beliefs, and values will not only be my responsibility, but the responsibility of each class member as well. Behavior that disregards or diminishes another student will not be permitted for any reason. This means that no racist, ableist, transphobic, xenophobic, chauvinistic or otherwise derogatory comments will be allowed. It also means that students must pay attention and listen respectfully to each other’s comments.</p>
+</div>
+<div id="indigenous-recognition-statement" class="section level2">
+<h2>Indigenous Recognition Statement</h2>
+<p>The University of Oregon is located on Kalapuya Ilihi, the traditional indigenous homeland of the Kalapuya people. Today, descendants are citizens of the Confederated Tribes of the Grand Ronde Community of Oregon and the Confederated Tribes of the Siletz Indians of Oregon, and they continue to make important contributions in their communities, at UO, and across the land we now refer to as Oregon.</p>
+</div>
+<div id="using-pronouns-and-personal-preference" class="section level2">
+<h2>Using Pronouns and Personal Preference</h2>
+<p>The College of Education is always working to include and engage everyone. One way we can do this is to share our pronouns, or the words we want to be called when people aren’t using our name. Like names, pronouns are an important part of how we identify ourselves. Because we recognize that assuming someone’s gender can be hurtful, especially to members of our community who are transgender, genderqueer, or non-binary. This practice can assist in promoting respectful communication. As a community, we are all learning together about the importance of pronouns and being better allies to the trans community on campus. If you would like to ensure clarity around pronouns, please feel free to share any pronouns you would prefer me to use when referring to you to help me be aware of how to address you respectfully. Please visit this university website for more information. <a href="https://studentlife.uoregon.edu/pronouns" class="uri">https://studentlife.uoregon.edu/pronouns</a></p>
+</div>
+<div id="documented-disability" class="section level2">
+<h2>Documented Disability</h2>
+<p>Appropriate accommodations will be provided for students with documented disabilities. If you have a documented disability and require accommodation, arrange to meet with the course instructor within the first two weeks of the term. The documentation of your disability must come in writing from the Accessible Education Center in the Office of Academic Advising and Student Services. Disabilities may include (but are not limited to) neurological impairment, orthopedic impairment, traumatic brain injury, visual impairment, chronic medical conditions, emotional/psychological disabilities, hearing impairment, and learning disabilities. For more information on Accessible Education Center, please see <a href="http://aec.uoregon.edu" class="uri">http://aec.uoregon.edu</a></p>
+</div>
+<div id="mandatory-reporting-of-child-abuse" class="section level2">
+<h2>Mandatory Reporting of Child Abuse</h2>
+<p>UO employees, including faculty, staff, and GEs, are mandatory reporters of child abuse. This statement is to advise you that that your disclosure of information about child abuse to a UO employee may trigger the UO employee’s duty to report that information to the designated authorities. Please refer to the following links for detailed information about mandatory reporting: <a href="http://hr.uoregon.edu/policies-leaves/general-information/mandatory-reporting-child-abuse-and-neglect" class="uri">http://hr.uoregon.edu/policies-leaves/general-information/mandatory-reporting-child-abuse-and-neglect</a></p>
+</div>
+<div id="reporting-title-ix-experiences" class="section level2">
+<h2>Reporting Title IX Experiences</h2>
+<p>Any student who has experienced sexual assault, relationship violence, sex or gender-based bullying, stalking, and/or sexual harassment may seek resources and help at safe.uoregon.edu. To get help by phone, a student can also call either the UO’s 24-hour hotline at 541-346-7244 [SAFE], or the non-confidential Title IX Coordinator at 541-346-8136. From the SAFE website, students may also connect to Callisto, a confidential, third-party reporting site that is not a part of the university.</p>
+<p>Students experiencing any other form of prohibited discrimination or harassment can find information at aaeo.uoregon.edu or contact the non-confidential AAEO office at 541-346-3123 or the Dean of Students Office at 541-346-3216 for help. As UO policy has different reporting requirements based on the nature of the reported harassment or discrimination, additional information about reporting requirements for discrimination or harassment unrelated to sexual assault, relationship violence, sex or gender based bullying, stalking, and/or sexual harassment is available at <a href="http://aaeo.uoregon.edu/content/discrimination-harassment" class="uri">http://aaeo.uoregon.edu/content/discrimination-harassment</a></p>
+<p>Specific details about confidentiality of information and reporting obligations of employees can be found at <a href="https://titleix.uoregon.edu" class="uri">https://titleix.uoregon.edu</a>.</p>
+</div>
+<div id="academic-misconduct-policy" class="section level2">
+<h2>Academic Misconduct Policy</h2>
+<p>All students are subject to the regulations stipulated in the UO Student Conduct Code <a href="http://conduct.uoregon.edu" class="uri">http://conduct.uoregon.edu</a>). This code represents a compilation of important regulations, policies, and procedures pertaining to student life. It is intended to inform students of their rights and responsibilities during their association with this institution, and to provide general guidance for enforcing those regulations and policies essential to the educational and research missions of the University.</p>
+</div>
+<div id="conflict-resolution" class="section level2">
+<h2>Conflict Resolution</h2>
+<p>Several options, both informal and formal, are available to resolve conflicts for students who believe they have been subjected to or have witnessed bias, unfairness, or other improper treatment.</p>
+<p>It is important to exhaust the administrative remedies available to you including discussing the conflict with the specific individual, contacting the Department Head, or within the College of Education, you can contact the Associate Dean for Academic Affairs and Equity (Krista Chronister, 346-2415, <a href="mailto:kmg@uoregon.edu" class="email">kmg@uoregon.edu</a>). Outside the College, you can contact:</p>
+<ul>
+<li>UO Bias Response Team: 346-3216 <a href="http://bias.uoregon.edu/whatbrt.htm" class="uri">http://bias.uoregon.edu/whatbrt.htm</a></li>
+<li>Affirmative Action and Equal Opportunity: 346-3123 <a href="http://aaeo.uoregon.edu/" class="uri">http://aaeo.uoregon.edu/</a></li>
+</ul>
+</div>
+<div id="grievance-policy" class="section level2">
+<h2>Grievance Policy</h2>
+<p>A student or group of students of the College of Education may appeal decisions or actions pertaining to admissions, programs, evaluation of performance and program retention and completion. Students who decide to file a grievance should follow the student grievance procedure, or alternative ways to file a grievance outlined in the Student Grievance Policy (<a href="https://education.uoregon.edu/academics/student-grievance" class="uri">https://education.uoregon.edu/academics/student-grievance</a>) or enter search: student grievance.</p>
+</div>
+<div id="in-case-of-inclement-weather" class="section level2">
+<h2>In Case of Inclement Weather</h2>
+<p>In the event the University operates on a curtailed schedule or closes, UO media relations will notify the Eugene-Springfield area radio and television stations as quickly as possible. In addition, a notice regarding the university’s schedule will be posted on the UO main home page (in the “News” section) at <a href="http://www.uoregon.edu" class="uri">http://www.uoregon.edu</a>. Additional information is available at <a href="http://hr.uoregon.edu/policy/weather.html" class="uri">http://hr.uoregon.edu/policy/weather.html</a>.</p>
+<p>If an individual class must be canceled due to inclement weather, illness, or other reason, a notice will be posted on Canvas or via email. During periods of inclement weather, please check Canvas and your email rather than contact department personnel. Due to unsafe travel conditions, departmental staff may be limited and unable to handle the volume of calls from you and others.</p>
+</div>
+<div id="course-incomplete-policy" class="section level2">
+<h2>Course Incomplete Policy</h2>
+<p>Students are expected to be familiar with university policy regarding grades of “incomplete” and the time line for completion. For details on the policy and procedures regarding incompletes, Please see: <a href="https://education.uoregon.edu/academics/incompletes-courses" class="uri">https://education.uoregon.edu/academics/incompletes-courses</a></p>
+</div>
+</div>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="by-nc.png" width="65"/></a>
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+</p>
+<script src="highlight-custom.js"></script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

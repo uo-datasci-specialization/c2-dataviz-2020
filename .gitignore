@@ -1,0 +1,7 @@
+nopublish/*
+data/*
+kaggle-data/*
+.Rproj.user
+.Rapp.history
+.DS_Store
+

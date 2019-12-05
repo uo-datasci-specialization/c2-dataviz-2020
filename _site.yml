@@ -1,0 +1,24 @@
+name: Communicating and Transforming Data
+output_dir: '.'
+navbar:
+  title: EDUC 610
+  left:
+  - text: Slides, Readings, & Schedule
+    href: schedule.html
+  - text: Assignments
+    href: assignments.html
+  right:
+  - text: Syllabus
+    href: site-syllabus.html
+  - icon: fa-github
+    href: https://github.com/uo-datasci-specialization/c2-communicate_transform_data
+output:
+  html_document:
+    theme: journal
+    css: website-custom.css
+    includes:
+      in_header: header.html
+      after_body: footer.html
+    lib_dir: site_libs
+    self_contained: no
+

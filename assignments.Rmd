@@ -1,0 +1,34 @@
+---
+title: "Assignments"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Labs
+
+|**Lab** | **Topic**                                       | **Assigned** | **Due** | 
+|:------:| :---------------------------------------------: | :------------| :-------| 
+| 1      | [Collaborating with GitHub](lab1.html)          | 1/8/20       | 1/13/20 | 
+| 2      | Mapping data to aesthetics         | 1/15/20      | 1/20/20 |
+| 3      | Visual perception                  | 1/29/20      | 2/3/20  | 
+| 4      | Color                              | 2/5/20       | 2/10/20 | 
+| 5      | Refining plots for communication   | 2/12/20      | 2/17/20 | 
+
+# Homework
+
+|**Homework** | **Topic**                                 | **Assigned** | **Due** | 
+|:-----------:| :-----------------------------------------| :------------| :-------| 
+| 1           | Creating new visualizations through joins | 1/22/20       | 1/29/20 | 
+| 2           | Visualizing uncertainty and tables     | 2/19/20      | 2/26/20 | 
+
+# Final Project
+
+|**Component** | **Due** | 
+|:-------------|:--------| 
+| [Proposal](https://uo-datasci-specialization.github.io/c2-communicate_transform_data/site-syllabus.html#proposal_(10_points;_5%;_due_february_6)) | 2/5/20 | 
+| [Draft](https://uo-datasci-specialization.github.io/c2-communicate_transform_data/site-syllabus.html#portfolio_draft_(15_points;_75%;_due_february_27))        | 2/26/20 | 
+| [Peer review](https://uo-datasci-specialization.github.io/c2-communicate_transform_data/site-syllabus.html#peer_review_(15_points;_75%;_due_march_6))  | 3/4/20 | 
+| [Presentation](https://uo-datasci-specialization.github.io/c2-communicate_transform_data/site-syllabus.html#presentation_(20_points;_10%)) | 3/11/20 or 3/11/20 | 
+| [Product](https://uo-datasci-specialization.github.io/c2-communicate_transform_data/site-syllabus.html#product_(60_points;_30%))      | 3/18/20 | 

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Schedule</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<script src="highlight-custom.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">EDUC 610</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="schedule.html">Slides, Readings, &amp; Schedule</a>
+</li>
+<li>
+  <a href="assignments.html">Assignments</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="site-syllabus.html">Syllabus</a>
+</li>
+<li>
+  <a href="https://github.com/uo-datasci-specialization/c2-communicate_transform_data">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Schedule</h1>
+
+</div>
+
+
+<table>
+<colgroup>
+<col width="1%" />
+<col width="1%" />
+<col width="10%" />
+<col width="9%" />
+<col width="5%" />
+<col width="4%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><strong>Week</strong></th>
+<th align="center"><strong>Date</strong></th>
+<th align="left"><strong>Theme</strong></th>
+<th align="left"><strong>Student Presentations</strong></th>
+<th align="left"><strong>Assignment Assigned</strong></th>
+<th align="left"><strong>Assignment Due</strong></th>
+<th align="left"><strong>Reading</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1a</td>
+<td align="center">1/6/20</td>
+<td align="left"><a href="slides/w1p1.html">Intro to the course</a></td>
+<td align="left"></td>
+<td align="left">Final Project</td>
+<td align="left">-</td>
+<td align="left"><a href="http://happygitwithr.com/installation-pain.html">Bryan 4-8</a> (9 optional)</td>
+</tr>
+<tr class="even">
+<td align="center">1b</td>
+<td align="center">1/8/20</td>
+<td align="left"><a href="lab1.html">Lab 1: GitHub group project</a></td>
+<td align="left"></td>
+<td align="left">Lab 1</td>
+<td align="left">-</td>
+<td align="left"><a href="http://happygitwithr.com/rstudio-git-github.html">Bryan 13</a>, <a href="http://happygitwithr.com/new-github-first.html">Bryan 16</a> (14-15 optional)</td>
+</tr>
+<tr class="odd">
+<td align="center">2a</td>
+<td align="center">1/13/20</td>
+<td align="left">Introduction to visualizations</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">Lab 1</td>
+<td align="left"><a href="https://socviz.co/groupfacettx.html#groupfacettx">Healy 4 (Show the right numbers)</a>, <a href="https://r4ds.had.co.nz/graphics-for-communication.html">R4DS 28 (Graphics for communication)</a>, <a href="https://serialmentor.com/dataviz/directory-of-visualizations.html">Wilke 5 (Directory of visualizations)</a></td>
+</tr>
+<tr class="even">
+<td align="center">2b</td>
+<td align="center">1/15/20</td>
+<td align="left">Lab 2: Mapping data to aesthetics</td>
+<td align="left"></td>
+<td align="left">Lab 2</td>
+<td align="left">-</td>
+<td align="left">If needed: <a href="https://socviz.co/gettingstarted.html#gettingstarted">Healy 2 (Get started)</a>, <a href="https://socviz.co/makeplot.html#makeplot">Healy 3 (Make a plot)</a></td>
+</tr>
+<tr class="odd">
+<td align="center">3a</td>
+<td align="center">1/20/20</td>
+<td align="left"><strong>MLK Day, No Class</strong></td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">Lab 2</td>
+<td align="left"><a href="https://r4ds.had.co.nz/relational-data.html">R4DS 13 (Relational data)</a></td>
+</tr>
+<tr class="even">
+<td align="center">3b</td>
+<td align="center">1/22/20</td>
+<td align="left">Joins</td>
+<td align="left"></td>
+<td align="left">Homework 1</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="center">4a</td>
+<td align="center">1/27/20</td>
+<td align="left"><a href="https://twitter.com/pkqstr"><strong>Guest Instructor</strong></a> Visual perception</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left"><a href="https://socviz.co/lookatdata.html#lookatdata">Healy 1 (Look at data)</a></td>
+</tr>
+<tr class="even">
+<td align="center">4b</td>
+<td align="center">1/29/20</td>
+<td align="left"><a href="https://twitter.com/pkqstr"><strong>Guest Instructor</strong></a> Lab 3: Visual perception</td>
+<td align="left"></td>
+<td align="left">Lab 3</td>
+<td align="left">Homework 1</td>
+<td align="left"><a href="https://serialmentor.com/dataviz/aesthetic-mapping.html">Wilke 2 (Visualizing data: Mapping data onto aesthetics)</a></td>
+</tr>
+<tr class="odd">
+<td align="center">5a</td>
+<td align="center">2/3/20</td>
+<td align="left">Color</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">Lab 3</td>
+<td align="left"><a href="https://serialmentor.com/dataviz/color-basics.html">Wilke 4 (Color scales)</a>, <a href="https://serialmentor.com/dataviz/color-pitfalls.html">Wilke 16 (Common pitfalls of color use)</a></td>
+</tr>
+<tr class="even">
+<td align="center">5b</td>
+<td align="center">2/5/20</td>
+<td align="left">Lab 4: Color</td>
+<td align="left"></td>
+<td align="left">Lab 4</td>
+<td align="left">Final Project Proposal</td>
+<td align="left"><a href="https://serialmentor.com/dataviz/visualizing-amounts.html">Wilke 6 (Visualizing amounts)</a></td>
+</tr>
+<tr class="odd">
+<td align="center">6a</td>
+<td align="center">2/10/20</td>
+<td align="left">Communication</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">Lab 4</td>
+<td align="left"><a href="https://serialmentor.com/dataviz/image-file-formats.html">Wilke 24 (Image file formats for exporting)</a>, <a href="https://serialmentor.com/dataviz/telling-a-story.html">Wilke 26 (Telling a story)</a></td>
+</tr>
+<tr class="even">
+<td align="center">6b</td>
+<td align="center">2/12/20</td>
+<td align="left">Lab 5: Choices and cycles</td>
+<td align="left"></td>
+<td align="left">Lab 5</td>
+<td align="left">-</td>
+<td align="left"><a href="https://socviz.co/refineplots.html#refineplots">Healy 8 (Refine your plots)</a>, <a href="https://serialmentor.com/dataviz/redundant-coding.html">Wilke 17 (Redundant coding)</a>, <a href="https://serialmentor.com/dataviz/balance-data-ink.html">Wilke 20 (Balance data-to-ink ratio)</a></td>
+</tr>
+<tr class="odd">
+<td align="center">7a</td>
+<td align="center">2/17/20</td>
+<td align="left">Visualizing uncertainty</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Lab 5</td>
+<td align="left"><a href="https://youtu.be/E1kSnWvqCw0">Kay Tapestry keynote</a>, <a href="https://serialmentor.com/dataviz/visualizing-uncertainty.html">Wilke 16 (Visualizing Uncertainty)</a></td>
+</tr>
+<tr class="even">
+<td align="center">7b</td>
+<td align="center">2/19/20</td>
+<td align="left">Tables &amp; fonts</td>
+<td align="left"></td>
+<td align="left">Homework 2</td>
+<td align="left">-</td>
+<td align="left"><a href="https://socviz.co/workgeoms.html#workgeoms">Healy 5 (Tables, labels, and notes)</a>, <a href="https://gt.rstudio.com/articles/intro-creating-gt-tables.html">gt tables</a></td>
+</tr>
+<tr class="odd">
+<td align="center">8a</td>
+<td align="center">2/24/20</td>
+<td align="left">Websites in R Markdown</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left"><a href="https://rstudio.github.io/radix/">radix</a>, <strong>Optional</strong>: <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">RMD Sites</a>, <a href="https://bookdown.org/yihui/blogdown/">blogdown</a></td>
+</tr>
+<tr class="even">
+<td align="center">8b</td>
+<td align="center">2/26/20</td>
+<td align="left">Dashboards</td>
+<td align="left"></td>
+<td align="left">Peer Review</td>
+<td align="left">Homework 2; Portfolio Draft</td>
+<td align="left"><a href="https://bookdown.org/yihui/rmarkdown/dashboards.html">RMD Dashboards</a></td>
+</tr>
+<tr class="odd">
+<td align="center">9a</td>
+<td align="center">3/2/20</td>
+<td align="left">Intro to geographic data</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left"><a href="https://socviz.co/maps.html#maps">Healy 7 (Draw maps)</a>, <a href="https://serialmentor.com/dataviz/geospatial-data.html">Wilke 15 (Geospatial data)</a></td>
+</tr>
+<tr class="even">
+<td align="center">9b</td>
+<td align="center">3/4/20</td>
+<td align="left">Work day</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">Peer Review</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="center">10a</td>
+<td align="center">3/9/20</td>
+<td align="left">Presentations</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Presentation</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="center">10b</td>
+<td align="center">3/11/20</td>
+<td align="left">Presentations</td>
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">Presentation</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">3/18/20</td>
+<td align="left">Final Projects</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Final Project</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="by-nc.png" width="65"/></a>
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+</p>
+<script src="highlight-custom.js"></script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
