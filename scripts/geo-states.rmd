@@ -1,0 +1,21 @@
+library(here)
+library(rio)
+library(dviz.supp)
+
+tuition <- import(here("data", "us_avg_tuition.xlsx"),
+                  setclass = "tbl_df")
+                  
+fips <- read_csv("https://gist.githubusercontent.com/dantonnoriega/bf1acd2290e15b91e6710b6fd3be0a53/raw/11d15233327c8080c9646c7e1f23052659db251d/us-state-ansi-fips.csv") %>%
+  rename(GEOID = st,
+         State = stname)
+fips
+
+states <- left_join(fips, tuition)
+
+
+states <- left_join(US_states_geoms$albers_revised, states)
+states %>%
+  gather(year, tuition, `2004-05`:`2015-16`) %>%
+  ggplot() +
+    geom_sf(aes(fill = tuition)) +
+    facet_wrap(~year)
