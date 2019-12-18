@@ -51,8 +51,7 @@ background-size:cover
 --
 1. Can read "flat" (i.e., rectangular) datasets into R 
 
-  + I don't care what you use, but you should be using RStudio Projects &amp; I
-    highly recommend [{here}](https://github.com/r-lib/here)
+  + I don't care what you use, but you should be using RStudio Projects &amp; the [{here}](https://github.com/r-lib/here) package
 
     - See [Jenny Bryan's blog post](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) for why.
 
@@ -79,13 +78,35 @@ tidyverse
 * Understand and fluently apply different types of data joins
 
 --
+* Understand best practices in data visualization
+
+--
 
 * Customize ggplot2 graphics by reordering factors, creating themes, and applying ggthemes
 
 
 --
 
-* Create an online data visualization portfolio using radix and/or flexdashboards to demonstrate key learning 
+* Create an online data visualization portfolio using distill and/or flexdashboards to demonstrate key learning 
+
+
+---
+# Examples
+Below are some links to final projects from students who took this class last year.
+
+.pull-left[
+### Dashboards
+* [Alexis Adams-Clark](https://alexisadamsclark.github.io/dashboard_finalproj/)
+* [Brendan Cullen](https://brendanhcullen.github.io/data-viz-dashboard/)
+* [Ouafaa Hmaddi](https://ohmaddi.github.io/Portfolio-Kiva/)
+]
+
+.pull-right[
+### Blog post
+* [Teresa Chen](https://teresashchen.github.io/blog/)
+* [Ashley Miller](https://ashlynnmiller.github.io/MsRememberingBlog/)
+* [Karlena Ochoa](https://karlenaochoa.github.io/610_website/)
+]
 
 
 ---
@@ -150,12 +171,66 @@ Wickham &amp; Grolemund (https://r4ds.had.co.nz)
 .gray[We'll talk about this more in a minute]
 * Geographic data (we'll have an intro, but there's a ton here and we won't really do it justice)
 * Network data
-* Flow data (alluvial diagrams)
+* Text data
+* DAGs
+* Flow data (e.g., alluvial diagrams)
 * Relational data (SQL &amp; friends)
 * Interactive plots
 * Animated plots
-* Text data, text nets
 
+---
+class: inverse center middle
+# Some examples
+
+---
+background-image:url(https://timogrossenbacher.ch/wp-content/uploads/2016/12/tm-final-map-1.png)
+background-size:contain
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+[Timo Grossenbacher](https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/)
+
+---
+class: inverse
+background-image:url(https://user-images.githubusercontent.com/25231784/41408567-08313b66-6fcb-11e8-8c55-75baa36364cd.png)
+background-size:contain
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+[Paul Campbell](https://gist.github.com/PaulC91/e767ca4f0c4335e6e0d2f71eb7cc98cc)
+
+---
+class: bottom
+background-image:url(https://ggdag.netlify.com/articles/intro-to-dags_files/figure-html/unnamed-chunk-11-1.png)
+background-size:contain
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+[ggdag](https://ggdag.netlify.com/articles/intro-to-dags.html) via Malcolm Barrett
+
+
+---
+class: bottom
+background-image:url(https://static01.nyt.com/images/2018/05/02/learning/economic-mobilityLN/economic-mobilityLN-superJumbo.png?quality=90&amp;auto=webp)
+background-size:contain
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+[Patrick Honner](https://www.nytimes.com/2018/05/03/learning/lesson-plans/moving-on-up-teaching-with-the-data-of-economic-mobility.html) via NYT
+
+---
+class: bottom
+background-image:url(https://cloud.githubusercontent.com/assets/7896861/17839509/d66b3c2a-67b7-11e6-9ee4-5f8ad54746d7.gif)
+background-size:contain
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+[James Curley](https://github.com/jalapic/nba)
 
 ---
 # Lab Schedule
@@ -196,6 +271,25 @@ Second will ask you to reproduce some data visualizations "in the wild" with pub
 
 
 ---
+# Quick note on reproducibility
+A [great blog post](https://simplystatistics.org/2019/08/28/you-can-replicate-almost-any-plot-with-ggplot2/) by [Rafael Irizarry](https://twitter.com/rafalab) shows how almost any plot you see in popular media can be reproduced in R with ggplot.
+
+
+--
+### For example
+
+
+---
+# Wall Street Journal Version
+
+![](img/measles_wsj.png) 
+
+---
+# ggplot reproduction
+
+![](https://simplystatistics.org/post/2019-08-28-you-can-replicate-almost-any-plot-with-ggplot2_files/figure-html/wsj-vaccines-example-1.png)
+
+---
 # Final Project 
 120 points total (60%)
 
@@ -214,7 +308,7 @@ Four components:
 
 * A web-deployed portfolio showcasing your [#dataviz](https://twitter.com/search?q=%23DataViz&amp;src=tyah)
   skills.
-  + [radix](https://rstudio.github.io/radix/) (what I'll lecture on), 
+  + [distill](https://rstudio.github.io/distill/) (what I'll lecture on), 
     [R Markdown](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html), or
     [blogdown](https://bookdown.org/yihui/blogdown/) website
   + Technical document with [pagedown](https://github.com/rstudio/pagedown) or
@@ -312,8 +406,7 @@ background-size:contain
 # Missing classes
 # 😬
 I will be out .bolder[all] of week 4! 
-* Trying desperately to get a guest speaker - most people I can think of will be at the conference with me.
-* May end up just having to have you do the readings and work on a take-home lab
+* We will have a guest lecturer, Dr. [Patrick Kennedy](https://twitter.com/pkqstr) from the [Center on Teaching and Learning](https://ctl.uoregon.edu).
 
 
 ---
