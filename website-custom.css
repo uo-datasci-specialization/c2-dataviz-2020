@@ -358,8 +358,8 @@ a {
 
 a:hover,
 a:focus {
-    color: #e22620;
-    text-decoration: underline
+    color: #AED6F1;
+    text-decoration: none
 }
 
 a:focus {
