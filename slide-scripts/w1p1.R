@@ -1,13 +1,13 @@
-## ----echo = FALSE---------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------------------------
 knitr::include_url("https://uo-datasci-specialization.github.io/c2-dataviz-2020/")
 
 
-## ----echo = FALSE---------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------------------------
 knitr::include_url("http://happygitwithr.com")
 
 
 
-## ----pres-wildorder, echo = FALSE, results = "asis"-----------------------------
+## ----pres-wildorder, echo = FALSE, results = "asis"---------------------------------------------
 peeps <- c("Mike", "Stephanie", "Katherine", "Akhila", "Thuy", "Sophie",
            "Brock", "Bryce", "Jim", "Joanna", "Asha", "Claire")
 
