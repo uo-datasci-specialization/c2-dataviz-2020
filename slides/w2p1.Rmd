@@ -26,7 +26,10 @@ update_geom_defaults('point', list(size = 5))
 
 # Agenda 
 
-Discuss different visualizations
+* Review Lab
+* Quick note on projects and `here::here()`
+
+### Discuss different visualizations
 * Visualizing distributions
   + histograms
   + density plots
@@ -42,7 +45,9 @@ Discuss different visualizations
 # Learning Objectives
 
 * Understand various ways the same underlying data can be displayed
+
 * Think through pros/cons of each
+
 * Understand the basic structure of the code to produce the various plots
 
 ---
@@ -858,7 +863,7 @@ class:inverse middle
 
 # Next time
 
-### Take-home lab
+### Lab 2
 Mapping data to aesthetics
 
 * Will ask you to try out different bins and bandwidths and make a judgment
