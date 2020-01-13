@@ -675,6 +675,53 @@ annual_means %>%
 Treat time (year) as a continuous variable
 
 ---
+# Grouped points
+Show change in tuition from 05-06 to 2015-16
+
+```{r grouped_points1}
+tuition %>% 
+  select(State, `2005-06`, `2015-16`)
+```
+
+---
+```{r grouped_points2}
+lt <- tuition %>% 
+  select(State, `2005-06`, `2015-16`) %>% 
+  pivot_longer(`2005-06`:`2015-16`,
+               names_to = "Year", 
+               values_to = "Tuition")
+lt
+```
+
+---
+```{r grouped_points3-echo, eval = FALSE}
+ggplot(lt, aes(State, Tuition)) +
+  geom_line(aes(group = State), color = "gray40") +
+  geom_point(aes(color = Year)) +
+  coord_flip()
+```
+
+---
+
+```{r grouped_points3-eval, echo = FALSE, fig.height = 10}
+ggplot(lt, aes(State, Tuition)) +
+  geom_line(aes(group = State), color = "gray40") +
+  geom_point(aes(color = Year)) +
+  coord_flip() +
+  theme(axis.text.y = element_text(size = 10))
+```
+
+---
+# Extensions
+* I know we're probably running short on time, but we definetly would want to keep going here:
+
+  + Order states according to something more meaningful (starting tuition, ending tuition, or difference in tution)
+
+  + Meaningful title, e.g., "Change in average tuition over a decade"
+
+  + Consider better color scheme for points
+
+---
 # Let's back up a bit
 * Lets go back to our full data, but in a format that we can have a `year`
 variable.
