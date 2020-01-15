@@ -11,7 +11,7 @@
 
 
 
-<title>Assignments</title>
+<title>Lab 2</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -377,115 +377,56 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Assignments</h1>
+<h1 class="title toc-ignore">Lab 2</h1>
+<h3 class="subtitle">Mapping data to aesthetics</h3>
+<h4 class="date">Assigned 1/16/19, Due 1/21/19</h4>
 
 </div>
 
 
-<div id="labs" class="section level1">
-<h1>Labs</h1>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><strong>Lab</strong></th>
-<th align="center"><strong>Topic</strong></th>
-<th align="left"><strong>Assigned</strong></th>
-<th align="left"><strong>Due</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1</td>
-<td align="center"><a href="lab1.html">Collaborating with GitHub</a></td>
-<td align="left">1/8/20</td>
-<td align="left">1/13/20</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center"><a href="lab2.html">Mapping data to aesthetics</a></td>
-<td align="left">1/15/20</td>
-<td align="left">1/20/20</td>
-</tr>
-<tr class="odd">
-<td align="center">3</td>
-<td align="center">Visual perception</td>
-<td align="left">1/29/20</td>
-<td align="left">2/3/20</td>
-</tr>
-<tr class="even">
-<td align="center">4</td>
-<td align="center">Color</td>
-<td align="left">2/5/20</td>
-<td align="left">2/10/20</td>
-</tr>
-<tr class="odd">
-<td align="center">5</td>
-<td align="center">Refining plots for communication</td>
-<td align="left">2/12/20</td>
-<td align="left">2/17/20</td>
-</tr>
-</tbody>
-</table>
+<div id="overview" class="section level1">
+<h1>Overview</h1>
+<p>The purpose of this lab is to get you to practice more with ggplot, specifically with visualizing distributions and amounts.</p>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>We’ll work with old <a href="https://twitter.com/search?q=%23tidytuesday&amp;src=tyah">#tidytuesday</a> data again, this time looking at global alcohol consumption. The data were originally published by <a href="https://github.com/fivethirtyeight/data">fivethirtyeight</a> to accompany their <a href="https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/">story</a> on the topic.</p>
+<p>The data can be read directly into R from the web using <code>rio::import</code> with the following link: <a href="https://github.com/fivethirtyeight/data/raw/master/alcohol-consumption/drinks.csv" class="uri">https://github.com/fivethirtyeight/data/raw/master/alcohol-consumption/drinks.csv</a></p>
 </div>
-<div id="homework" class="section level1">
-<h1>Homework</h1>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><strong>Homework</strong></th>
-<th align="left"><strong>Topic</strong></th>
-<th align="left"><strong>Assigned</strong></th>
-<th align="left"><strong>Due</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1</td>
-<td align="left">Creating new visualizations through joins</td>
-<td align="left">1/22/20</td>
-<td align="left">2/5/20</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="left">Visualizing uncertainty and tables</td>
-<td align="left">2/17/20</td>
-<td align="left">3/2/20</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="final-project" class="section level1">
-<h1>Final Project</h1>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><strong>Component</strong></th>
-<th align="left"><strong>Due</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="https://uo-datasci-specialization.github.io/c2-dataviz-2020/site-syllabus.html#proposal_(10_points;_5%;_due_february_5)">Proposal</a></td>
-<td align="left">2/5/20</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://uo-datasci-specialization.github.io/c2-dataviz-2020/site-syllabus.html#portfolio_draft_(15_points;_75%;_due_february_26)">Draft</a></td>
-<td align="left">2/26/20</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://uo-datasci-specialization.github.io/c2-dataviz-2020/site-syllabus.html#peer_review_(15_points;_75%;_due_march_4)">Peer review</a></td>
-<td align="left">3/4/20</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://uo-datasci-specialization.github.io/c2-dataviz-2020/site-syllabus.html#presentation_(20_points;_10%)">Presentation</a></td>
-<td align="left">3/9/20 or 3/11/20</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://uo-datasci-specialization.github.io/c2-dataviz-2020/site-syllabus.html#product_(60_points;_30%)">Product</a></td>
-<td align="left">3/18/20</td>
-</tr>
-</tbody>
-</table>
+<div id="assignment" class="section level1">
+<h1>Assignment</h1>
+<p>Start a new R Markdown document - you can choose to house this lab on GitHub or not. Either way is fine.</p>
+<ol style="list-style-type: decimal">
+<li>Write the code to load the data in directly from the web, using the link above.</li>
+<li>Explore the overall distribution of total alcohol consumed.</li>
+</ol>
+<ul>
+<li>Histogram
+<ul>
+<li>play with the number of bins</li>
+<li>settle on a number of bins and provide a brief justification in text</li>
+</ul></li>
+<li>Density plot
+<ul>
+<li>compare the default bandwidth with a few other selections entered manually.</li>
+<li>settle on a bandwidth selection, and justify why briefly in text</li>
+</ul></li>
+</ul>
+<p>Reorganize the data so you have a <code>type</code> and <code>servings</code> column.</p>
+<ol style="list-style-type: decimal">
+<li>Evaluate the distribution of servings by type using at least three different methods. Provide a brief substantive conclusion.</li>
+<li>Reproduce the following plot. It does not have to be exact, but should be close</li>
+</ol>
+<p><img src="lab2_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<div id="extra-credit" class="section level3">
+<h3>Extra Credit</h3>
+<p>For one point extra credit, reorder countries according to wine consumption, so the plot looks as follows</p>
+<p><img src="lab2_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+</div>
+</div>
+<div id="finishing-up" class="section level1">
+<h1>Finishing up</h1>
+<p>When you have finished the above, upload your rendered (knit) HTML file to canvas.</p>
 </div>
 
 <p>
