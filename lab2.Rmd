@@ -1,0 +1,198 @@
+---
+title: "Lab 2"
+subtitle: "Mapping data to aesthetics"
+date: "Assigned 1/16/19, Due 1/21/19"
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    theme: "journal"
+    css: "website-custom.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE,
+                      warning = FALSE,
+                      echo = FALSE,
+                      fig.width = 10,
+                      fig.height = 10,
+                      dev.args = list(bg="transparent"))
+library(tidyverse)
+
+d <- rio::import("https://github.com/rfordatascience/tidytuesday/raw/master/data/2018/2018-06-26/week13_alcohol_global.csv",
+                 setclass = "tbl_df")
+
+theme_set(theme_minimal(base_size = 15))
+myblue <- "#409FDF"
+
+
+td <- d %>%
+  pivot_longer(
+    cols = contains("_servings"),
+    names_to = "type",
+    names_pattern = "(.+)_servings",
+    values_to = "servings"
+  ) %>%
+  rename(total_liters = total_litres_of_pure_alcohol)
+
+ggplot(td, aes(servings)) +
+  geom_histogram(bins = 10,
+                 color = "white",
+                 fill = myblue,
+                 alpha = 0.7)
+
+ggplot(td, aes(servings)) +
+  geom_histogram(bins = 50,
+                 color = "white",
+                 fill = myblue,
+                 alpha = 0.7)
+
+ggplot(td, aes(servings)) +
+  geom_histogram(bins = 35,
+                 color = "white",
+                 fill = myblue,
+                 alpha = 0.7)
+
+ggplot(td, aes(servings)) +
+  geom_density(bw = 1,
+               color = "white",
+               fill = myblue,
+               alpha = 0.7)
+
+ggplot(td, aes(servings)) +
+  geom_density(bw = 5,
+               color = "white",
+               fill = myblue,
+               alpha = 0.7)
+
+ggplot(td, aes(servings)) +
+  geom_density(bw = 10,
+               color = "white",
+               fill = myblue,
+               alpha = 0.7)
+
+ggplot(td, aes(servings)) +
+  geom_density(color = "white",
+               fill = myblue,
+               alpha = 0.7)
+
+ggplot(td, aes(servings)) +
+  geom_histogram(color = "white",
+                 bins = 35) +
+  facet_wrap(~type)
+
+ggplot(td, aes(servings)) +
+  geom_density(aes(fill = type),
+               color = "white",
+               alpha = 0.25) +
+  scale_fill_brewer(palette = "Set2")
+
+
+ggplot(td, aes(servings, type)) +
+  ggridges::geom_density_ridges(fill = myblue,
+                                color = "white")
+
+ggplot(td, aes(servings, type)) +
+  ggridges::geom_density_ridges(fill = myblue,
+                                color = "white") +
+  xlim(0, 500)
+
+ggplot(td, aes(type, servings)) +
+  ggforce::geom_sina()
+```
+
+# Overview
+The purpose of this lab is to get you to practice more with ggplot, 
+specifically with visualizing distributions and amounts.
+
+## Data
+We'll work with old [#tidytuesday](https://twitter.com/search?q=%23tidytuesday&src=tyah) data again, this time looking at global
+alcohol consumption. The data were originally published by 
+[fivethirtyeight](https://github.com/fivethirtyeight/data) to accompany their 
+[story](https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/) 
+on the topic.
+
+The data can be read directly into R from the web using  `rio::import` with the following link: https://github.com/fivethirtyeight/data/raw/master/alcohol-consumption/drinks.csv
+
+# Assignment
+Start a new R Markdown document - you can choose to house this lab on 
+   GitHub or not. Either way is fine.
+
+1. Write the code to load the data in directly from the web, using the link 
+   above.
+1. Explore the overall distribution of total alcohol consumed. 
+  + Histogram 
+    - play with the number of bins 
+    - settle on a number of bins and provide a brief justification in text
+  + Density plot
+    - compare the default bandwidth with a few other selections entered 
+      manually.
+    - settle on a bandwidth selection, and justify why briefly in text  
+
+Reorganize the data so you have a `type` and `servings` column. 
+
+1. Evaluate the distribution of servings by type using at least three 
+   different methods. Provide a brief substantive conclusion.
+1. Reproduce the following plot. It does not have to be exact, but should be close
+
+```{r echo = FALSE}
+top25 <- td %>%
+  mutate(type = stringr::str_to_title(type)) %>%
+  arrange(desc(total_liters)) %>%
+  slice(1:(25*3))
+
+
+pd <- top25 %>%
+  group_by(country) %>%
+  mutate(tot_servings = sum(servings)) %>%
+  ungroup() %>%
+  mutate(servings_prop = servings/tot_servings)
+
+ggplot(pd, aes(country, servings_prop)) +
+  geom_col(aes(fill = type),
+           alpha = 0.8) +
+  coord_flip() +
+  scale_fill_brewer("Alcohol Type", 
+                    palette = "Paired",
+                    breaks = c("Wine", "Spirit", "Beer")) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "",
+       y = "Proportion of total alcohol consumed",
+       title = "Alcohol consumption by type",
+       subtitle = "Top 25 countries displayed (according to total liters consumed)") +
+  theme(legend.position = c(0.8, -0.1),
+        legend.direction = "horizontal",
+        plot.title.position = "plot",
+        plot.margin = margin(b = 2, r = 2, unit = "cm"))
+```
+
+### Extra Credit
+For up to one point extra credit, reorder countries according to wine consumption, so the plot looks as follows
+
+```{r echo = FALSE}
+wine <- filter(pd, type == "Wine") %>%
+  mutate(country = forcats::fct_reorder(country, servings))
+
+pd %>%
+  mutate(country = factor(country, levels = levels(wine$country))) %>%
+ggplot(aes(country, servings_prop)) +
+  geom_col(aes(fill = type), 
+           alpha = 0.8) +
+  coord_flip() +
+  scale_fill_brewer("Alcohol Type", 
+                    palette = "Paired",
+                    breaks = c("Wine", "Spirit", "Beer")) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "",
+       y = "Proportion of total alcohol consumed",
+       title = "Alcohol consumption by type",
+       subtitle = "Top 25 countries displayed (according to total liters consumed)") +
+  theme(legend.position = c(0.8, -0.1),
+        legend.direction = "horizontal",
+        plot.title.position = "plot",
+        plot.margin = margin(b = 2, r = 2, unit = "cm"))
+
+```
+
+# Finishing up
+When you have finished the above, upload your rendered (knit) HTML file to canvas.
