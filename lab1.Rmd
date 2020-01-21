@@ -136,7 +136,7 @@ library(lubridate)
 d %>% 
   mutate(month = round_date(created_at, unit = "month")) %>% 
   count(month) %>%
-  filter(month < lubridate::as_datetime("2019-01-01 00:00:00")) %>% 
+  filter(month < as_datetime("2019-01-01 00:00:00")) %>% 
   ggplot(aes(month, n)) +
   geom_smooth() +
   geom_line()
@@ -149,7 +149,7 @@ d %>%
 d %>% 
   mutate(month = round_date(created_at, unit = "month")) %>% 
   count(month) %>%
-  filter(month < lubridate::as_datetime("2019-01-01 00:00:00")) %>% 
+  filter(month < as_datetime("2019-01-01 00:00:00")) %>% 
   ggplot(aes(month, n)) +
   geom_area(fill = "cornflowerblue",
             alpha = 0.3) +
