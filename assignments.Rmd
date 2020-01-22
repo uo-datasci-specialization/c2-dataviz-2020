@@ -20,7 +20,7 @@ output:
 
 |**Homework** | **Topic**                                 | **Assigned** | **Due** | 
 |:-----------:| :-----------------------------------------| :------------| :-------| 
-| 1           | Creating new visualizations through joins | 1/22/20       | 2/5/20 | 
+| 1           | [Creating new visualizations through joins](hw1.html) | 1/22/20       | 2/5/20 | 
 | 2           | Visualizing uncertainty and tables     | 2/17/20      | 3/2/20 | 
 
 # Final Project
