@@ -25,6 +25,46 @@ d <- rio::import("https://github.com/rfordatascience/tidytuesday/raw/master/data
 theme_set(theme_minimal(base_size = 15))
 myblue <- "#409FDF"
 
+ggplot(d, aes(total_litres_of_pure_alcohol)) +
+  geom_histogram(bins = 10,
+                 color = "white",
+                 fill = myblue,
+                 alpha = 0.7)
+
+ggplot(d, aes(total_litres_of_pure_alcohol)) +
+  geom_histogram(bins = 15,
+                 color = "white",
+                 fill = myblue,
+                 alpha = 0.7)
+
+ggplot(d, aes(total_litres_of_pure_alcohol)) +
+  geom_histogram(bins = 25,
+                 color = "white",
+                 fill = myblue,
+                 alpha = 0.7)
+
+ggplot(d, aes(total_litres_of_pure_alcohol)) +
+  geom_density(bw = .2,
+               color = "white",
+               fill = myblue,
+               alpha = 0.7)
+
+ggplot(d, aes(total_litres_of_pure_alcohol)) +
+  geom_density(bw = .5,
+               color = "white",
+               fill = myblue,
+               alpha = 0.7)
+
+ggplot(d, aes(total_litres_of_pure_alcohol)) +
+  geom_density(bw = 1,
+               color = "white",
+               fill = myblue,
+               alpha = 0.7)
+
+ggplot(d, aes(total_litres_of_pure_alcohol)) +
+  geom_density(color = "white",
+               fill = myblue,
+               alpha = 0.7)
 
 td <- d %>%
   pivot_longer(
@@ -36,49 +76,9 @@ td <- d %>%
   rename(total_liters = total_litres_of_pure_alcohol)
 
 ggplot(td, aes(servings)) +
-  geom_histogram(bins = 10,
-                 color = "white",
-                 fill = myblue,
-                 alpha = 0.7)
-
-ggplot(td, aes(servings)) +
-  geom_histogram(bins = 50,
-                 color = "white",
-                 fill = myblue,
-                 alpha = 0.7)
-
-ggplot(td, aes(servings)) +
-  geom_histogram(bins = 35,
-                 color = "white",
-                 fill = myblue,
-                 alpha = 0.7)
-
-ggplot(td, aes(servings)) +
-  geom_density(bw = 1,
-               color = "white",
-               fill = myblue,
-               alpha = 0.7)
-
-ggplot(td, aes(servings)) +
-  geom_density(bw = 5,
-               color = "white",
-               fill = myblue,
-               alpha = 0.7)
-
-ggplot(td, aes(servings)) +
-  geom_density(bw = 10,
-               color = "white",
-               fill = myblue,
-               alpha = 0.7)
-
-ggplot(td, aes(servings)) +
-  geom_density(color = "white",
-               fill = myblue,
-               alpha = 0.7)
-
-ggplot(td, aes(servings)) +
   geom_histogram(color = "white",
-                 bins = 35) +
+                 fill = myblue,
+                 bins = 15) +
   facet_wrap(~type)
 
 ggplot(td, aes(servings)) +
@@ -171,7 +171,7 @@ For up to one point extra credit, reorder countries according to wine consumptio
 
 ```{r echo = FALSE}
 wine <- filter(pd, type == "Wine") %>%
-  mutate(country = forcats::fct_reorder(country, servings))
+  mutate(country = forcats::fct_reorder(country, servings_prop))
 
 pd %>%
   mutate(country = factor(country, levels = levels(wine$country))) %>%
