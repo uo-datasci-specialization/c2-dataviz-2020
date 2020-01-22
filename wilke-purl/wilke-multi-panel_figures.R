@@ -1,6 +1,6 @@
 ## ----echo = FALSE, message = FALSE, warning = FALSE----------------------
 # run setup script
-source(here::here("resources", "_common.R"))
+source(here::here("wilke-purl", "_common.R"))
 
 library(forcats)
 library(stringr)
@@ -13,7 +13,7 @@ titanic %>% mutate(surv = ifelse(survived == 0, "died", "survived")) %>%
     scale_x_discrete(name = NULL) + 
     scale_y_continuous(limits = c(0, 195), expand = c(0, 0)) +
     scale_fill_manual(values = c("#D55E00D0", "#0072B2D0"), guide = "none") +
-    theme_dviz_hgrid(rel_small = 1) +
+    theme_dviz_hgrid(rel_small = 1, font_family = "Roboto Light") +
     theme(axis.line = element_blank(),
           axis.ticks.length = grid::unit(0, "pt"),
           axis.ticks = element_blank(),
@@ -35,7 +35,7 @@ ggplot(filter(movies, year > 1905), aes(y = rating, x = votes)) +
   scale_y_continuous(limits = c(0, 10), expand = c(0, 0),
                      breaks = c(0, 5, 10), name = "average rating") + 
   facet_wrap(~year, ncol = 10) +
-  theme_dviz_grid(10, rel_small = 1, line_size = 0.25) +
+  theme_dviz_grid(10, rel_small = 1, line_size = 0.25, font_family = "Roboto Light") +
   theme(strip.text = element_text(margin = margin(3.5, 3.5, 3.5, 3.5)),
         panel.border = element_rect(colour = "grey80", fill = NA, linetype = 1,
                                     size = 1.))
@@ -60,7 +60,7 @@ p <- ggplot(BA_top_degrees, aes(year, perc)) +
   facet_wrap(~field, labeller = label_wrap_gen(width = 25), ncol = 3,
              scales = "free") +
   ylab("percent") +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(strip.text = element_text(margin = margin(7, 7, 3, 7)),
         panel.spacing.x = grid::unit(14, "pt"),
         plot.margin = margin(3.5, 14, 3.5, 0)) 
@@ -74,7 +74,7 @@ ggplot(BA_top_degrees, aes(year, perc)) +
              scales = "free") +
   scale_y_continuous(limits = c(0, 0.241), expand = c(0, 0),
                      name = "percent") +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(strip.text = element_text(margin = margin(7, 7, 3, 7)),
         panel.spacing.x = grid::unit(14, "pt"),
         plot.margin = margin(3.5, 14, 3.5, 0)) 
@@ -98,7 +98,7 @@ p1 <- ggplot(BA_totals, aes(year, total/1e6)) +
   scale_y_continuous(limits = c(0, 2.05), expand = c(0, 0),
                      name = "degrees awarded (millions)") +
   scale_x_continuous(limits = c(1970, 2016), expand = c(0, 0), name = NULL) +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(axis.title = element_text(color = textcol),
         axis.text = element_text(color = textcol),
         plot.margin = margin(3, 7, 3, 0))
@@ -125,7 +125,7 @@ p2 <- ggplot(BA_top_pairs, aes(x = year, y = perc)) +
                      sec.axis = dup_axis(breaks = filter(BA_top_pairs, year == 2015)$perc + 0.0001,
                                          labels = filter(BA_top_pairs, year == 2015)$field_wrapped,
                                          name = NULL)) +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(axis.line.x = element_blank(),
         axis.ticks.x = element_blank(),
         axis.title.y = element_text(color = textcol),
@@ -163,7 +163,7 @@ p1 <- ggplot(athletes_df, aes(x = sex)) +
   geom_bar(fill = "#56B4E9E0") +
   scale_y_continuous(limits = c(0, 95), expand = c(0, 0), name = "number") +
   scale_x_discrete(name = NULL, labels = c("female", "male")) +
-  theme_dviz_hgrid(12, rel_small = 1) + 
+  theme_dviz_hgrid(12, rel_small = 1, font_family = "Roboto Light") + 
   theme(axis.ticks.x = element_blank(),
         #axis.ticks.length = grid::unit(0, "pt"),
         plot.margin = margin(3, 6, 0, 0))
@@ -181,7 +181,7 @@ p2 <- ggplot(athletes_df, aes(x = rcc, y = wcc, shape = sex, color = sex, fill =
   scale_fill_manual(values = c("#CC79A780", "#56B4E980"), name = NULL,
                      labels = c("female   ", "male"),
                      guide = guide_legend(direction = "horizontal")) +
-  theme_dviz_hgrid(12, rel_small = 1) +
+  theme_dviz_hgrid(12, rel_small = 1, font_family = "Roboto Light") +
   theme(legend.position = c(1, .1),
         legend.justification = "right",
         legend.box.background = element_rect(fill = "white", color = "white"),
@@ -201,7 +201,7 @@ p3 <- ggplot(athletes_df, aes(x = sport, y = pcBfat, color = fct_relevel(sex, "m
                      labels = c("male", "female")) +
   scale_x_discrete(name = NULL) +
   scale_y_continuous(name = "% body fat") +
-  theme_dviz_hgrid(12, rel_small = 1) +
+  theme_dviz_hgrid(12, rel_small = 1, font_family = "Roboto Light") +
   theme(axis.line.x = element_blank(),
         axis.ticks.x = element_blank(),
         #axis.ticks.length = grid::unit(0, "pt")
@@ -216,7 +216,7 @@ p1 <- ggplot(athletes_df, aes(x = sex, fill = sex)) +
   scale_y_continuous(limits = c(0, 95), expand = c(0, 0), name = "number") +
   scale_x_discrete(name = NULL, labels = c("female", "male")) +
   scale_fill_manual(values = c("#D55E00D0", "#0072B2D0"), guide = "none") +
-  theme_dviz_hgrid(12, rel_small = 1) + 
+  theme_dviz_hgrid(12, rel_small = 1, font_family = "Roboto Light") + 
   theme(#axis.line.x = element_blank(),
         axis.ticks.x = element_blank(),
         #axis.ticks.length = grid::unit(0, "pt"),
@@ -227,7 +227,7 @@ p2 <- ggplot(athletes_df, aes(x = rcc, y = wcc, fill = sex)) +
   scale_x_continuous(limits = c(3.8, 6.75), name = NULL) +
   scale_y_continuous(limits = c(2.2, 11.), expand = c(0, 0), name = "WBC count") +
   scale_fill_manual(values = c("#D55E00D0", "#0072B2D0"), guide = "none") +
-  theme_dviz_hgrid(12, rel_small = 1) +
+  theme_dviz_hgrid(12, rel_small = 1, font_family = "Roboto Light") +
   theme(plot.margin = margin(3, 0, 0, 0))
 
 p_row <- plot_grid(p1, p2, labels = "auto", align = 'h', rel_widths = c(0.7, 1)) +
@@ -248,7 +248,7 @@ p3 <- ggplot(athletes_df, aes(x = sport, y = pcBfat, color = sex, fill = sex)) +
   guides(color = guide_legend(override.aes = list(fill = c("#D55E00D0", "#0072B2D0"),
                                                   color = "white", size = 2),
                               direction = "horizontal")) +
-  theme_dviz_hgrid(12, rel_small = 1) +
+  theme_dviz_hgrid(12, rel_small = 1, font_family = "Roboto Light") +
   theme(axis.line.x = element_blank(),
         axis.ticks.x = element_blank(),
         #axis.ticks.length = grid::unit(0, "pt"),
@@ -264,7 +264,7 @@ p1 <- ggplot(athletes_df, aes(x = sex, fill = sex)) +
   scale_y_continuous(limits = c(0, 95), expand = c(0, 0), name = "number") +
   scale_x_discrete(name = NULL, labels = c("female", "male")) +
   scale_fill_manual(values = c("#D55E00D0", "#0072B2D0"), guide = "none") +
-  theme_dviz_open(12, rel_small = 1) +
+  theme_dviz_open(12, rel_small = 1, font_family = "Roboto Light") +
   background_grid(major = "y") +
   theme(#axis.line.x = element_blank(),
         #axis.ticks.x = element_blank(),
@@ -276,7 +276,7 @@ p2 <- ggplot(athletes_df, aes(x = rcc, y = wcc, fill = sex)) +
   scale_x_continuous(limits = c(3.8, 6.75), name = "RBC count") +
   scale_y_continuous(limits = c(2.2, 11.), expand = c(0, 0), name = "WBC count") +
   scale_fill_manual(values = c("#D55E00D0", "#0072B2D0"), guide = "none") +
-  theme_dviz_open(12, rel_small = 1) +
+  theme_dviz_open(12, rel_small = 1, font_family = "Roboto Light") +
   background_grid(major = "y") +
   theme(plot.margin = margin(3, 18, 0, 0))
 
@@ -296,7 +296,7 @@ p3 <- ggplot(athletes_df, aes(x = sport, y = pcBfat, color = sex, fill = sex)) +
   guides(color = guide_legend(override.aes = list(fill = c("#D55E00D0", "#0072B2D0"),
                                                   color = "white", size = 2),
                               direction = "horizontal")) +
-  theme_dviz_open(12, rel_small = 1) +
+  theme_dviz_open(12, rel_small = 1, font_family = "Roboto Light") +
   background_grid(major = "y") +
   theme(#axis.line.x = element_blank(),
         #axis.ticks.x = element_blank(),

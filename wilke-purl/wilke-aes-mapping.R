@@ -1,6 +1,6 @@
 ## ----echo = FALSE, message = FALSE---------------------------------------
 # run setup script
-source(here::here("resources", "_common.R"))
+source(here::here("wilke-purl", "_common.R"))
 
 library(forcats)
 library(patchwork)
@@ -61,7 +61,7 @@ scale_num <- ggplot(df, aes(x)) +
   geom_point(size = 20, color = "#0072B2", y = 1) + 
   scale_y_continuous(limits = c(0.8, 1.2), expand = c(0, 0), breaks = 1, label = "position  ") +
   scale_x_continuous(limits = c(.7, 4.4), breaks = 1:5, labels = c("1", "2", "3", "4", "5"), name = NULL, position = "top") +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"),
         axis.text = element_text(size = 30),
         axis.title.y = element_blank(),
@@ -73,7 +73,7 @@ scale_color <- ggplot(df, aes(x, color = factor(x), fill = factor(x))) +
   scale_x_continuous(limits = c(.7, 4.4), breaks = NULL) +
   scale_color_manual(values = darken(c("#0082A6", "#4EBBB9", "#9CDFC2", "#D8F0CD"), .1), guide = "none") +
   scale_fill_manual(values = c("#0082A6", "#4EBBB9", "#9CDFC2", "#D8F0CD"), guide = "none") +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"),
         axis.text.x = element_blank(),
         axis.text.y = element_text(size = 30),
@@ -86,7 +86,7 @@ scale_shape <- ggplot(df, aes(x, shape = factor(x))) +
   scale_y_continuous(limits = c(0.8, 1.2), expand = c(0, 0), breaks = 1, label = "shape  ") +
   scale_x_continuous(limits = c(.7, 4.4), breaks = NULL) +
   scale_shape_manual(values = 21:24, guide = "none") +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"),
         axis.text.x = element_blank(),
         axis.text.y = element_text(size = 30),
@@ -125,7 +125,7 @@ ggplot(temps_long, aes(x = date, y = temperature, color = location)) +
                      breaks = seq(20, 100, by = 20),
                      name = "temperature (°F)") +
   scale_color_OkabeIto(order = c(1:3, 7), name = NULL) +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(legend.title.align = 0.5)
 
 ## ----four-locations-temps-by-month, fig.width = 8.5, fig.asp = .3, fig.cap = '(ref:four-locations-temps-by-month)'----
@@ -143,16 +143,15 @@ mean_temps <- temps_long %>%
 p <- ggplot(mean_temps, aes(x = month, y = location, fill = mean)) + 
   geom_tile(width = .95, height = 0.95) + 
   scale_fill_viridis_c(option = "B", begin = 0.15, end = 0.98,
-                       name = "temperature (°F)") + 
+                       name = "Temperature (°F)") + 
   scale_y_discrete(name = NULL) +
   coord_fixed(expand = FALSE) +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light", font_size = 25) +
   theme(axis.line = element_blank(),
         axis.ticks = element_blank(),
         #axis.text.y = element_text(size = 14),
-        legend.title = element_text(size = 12)
+        legend.title = element_text(size = 18)
         )
-
 # fix legend (make it centered)
 ggdraw(align_legend(p))
 
@@ -166,7 +165,7 @@ p_mtcars <- ggplot(mtcars, aes(disp, mpg, fill = hp, shape = factor(cyl), size =
   guides(shape = guide_legend(override.aes = list(size = 4, fill = "#329D84")),
          size = guide_legend(override.aes = list(shape = 21, fill = "#329D84"),
                              title = "weight (1000 lbs)")) +
-  theme_dviz_open() + background_grid() +
+  theme_dviz_open(font_family = "Roboto Light", font_size = 20) + background_grid() +
   theme(#legend.title = element_text(size = 12),
         legend.box.background = element_rect(fill = "white", color = "white"),
         legend.position = "top",

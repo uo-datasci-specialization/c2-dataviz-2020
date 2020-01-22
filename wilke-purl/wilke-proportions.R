@@ -1,6 +1,6 @@
 ## ----echo = FALSE, message = FALSE---------------------------------------
 # run setup script
-source(here::here("resources", "_common.R"))
+source(here::here("wilke-purl", "_common.R"))
 
 library(tidyr)
 library(forcats)
@@ -73,7 +73,7 @@ wilke_pie <- ggplot(bund_pie) +
   scale_fill_manual(
     values = bund_pie$colors[order(bund_pie$party)]
   ) +
-  theme_dviz_map(25) +
+  theme_dviz_map(25, font_family = "Roboto Light") +
   theme(
     legend.position = "none",
     plot.margin = margin(3.5, 0, 3.5, 0)
@@ -102,7 +102,7 @@ bt_bars_yax <- axis_canvas(bt_bars_stacked_base, axis = "y") +
 
 bt_bars_stacked <- insert_yaxis_grob(
   bt_bars_stacked_base + 
-    theme_dviz_hgrid(25) +
+    theme_dviz_hgrid(25, font_family = "Roboto Light") +
     theme(plot.margin = margin(7, 0, 7, 0)),
   bt_bars_yax, grid::unit(.5, "null"))
 
@@ -117,7 +117,7 @@ bt_bars_xax <- axis_canvas(bt_bars_stacked_base, axis = "y") +
 bt_bars_hstacked <- insert_xaxis_grob(
   bt_bars_stacked_base + coord_flip() +
     scale_y_continuous(expand = c(0, 0), position = "right") +
-    theme_dviz_vgrid(25) +
+    theme_dviz_vgrid(25, font_family = "Roboto Light") +
     theme(plot.margin = margin(3, 0, 3, 7)),
   bt_bars_xax, grid::unit(40, "pt"), position = "bottom")
 ggdraw(bt_bars_hstacked)
@@ -133,7 +133,7 @@ bt_bars <- ggplot(bundestag, aes(x = factor(party, levels = bundestag$party), y 
   scale_y_continuous(expand = c(0, 0)) +
   scale_fill_manual(values = bundestag$colors[order(bundestag$party)], guide = "none") + 
   #geom_hline(yintercept = c(50, 100, 150, 200), color = "#ffffff70", size = .5) +
-  theme_dviz_hgrid(25) +
+  theme_dviz_hgrid(25, font_family = "Roboto Light") +
   theme(axis.ticks.x = element_blank())
 
 bt_bars
@@ -164,7 +164,7 @@ market_pies <- ggplot(market_pies_df) +
   scale_y_continuous(limits = c(-1.2, 1.2), expand = c(0, 0),name = "", breaks = NULL, labels = NULL) +
   scale_fill_OkabeIto(order = c(1:3, 5, 4)) + 
   guides(fill = "none") +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(axis.line.x = element_blank(),
         axis.title.x = element_blank(),
         axis.ticks.y = element_blank(),
@@ -180,7 +180,7 @@ stacked_bars <- ggplot(marketshare, aes(x = year, y = percent, fill = company)) 
   geom_col(position = "stack") + 
   scale_y_continuous(expand = c(0, 0)) +
   scale_fill_OkabeIto(order = c(1:3, 5, 4)) + 
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(plot.margin = margin(14, 7, 3, 0))
 
 stamp_bad(stacked_bars)
@@ -191,7 +191,7 @@ ggplot(marketshare, aes(x = company, y = percent, fill = company)) +
   facet_wrap(~year) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_fill_OkabeIto(order = c(1:3, 5, 4), guide = "none") + 
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(strip.background = element_blank())
 
 ## ----women-parliament, fig.width = 6, fig.asp = .55, fig.cap = '(ref:women-parliament)'----
@@ -214,7 +214,7 @@ plot_base <- ggplot(women_rwanda, aes(x = year, y = percent, fill = gender)) +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
     scale_fill_manual(values = c("#D55E00E0", "#0072B2E0"), guide = "none") +
-    theme_dviz_open() + 
+    theme_dviz_open(font_family = "Roboto Light") + 
     theme(#axis.ticks.y = element_blank(),
           #axis.ticks.x = element_blank(),
           #axis.line.x = element_blank(),
@@ -248,7 +248,7 @@ p_health <- ggplot(df_health, aes(x = age, y = ..count.., fill = health, color =
                      labels = c(0, 25, 50, 75, 100)) + 
   scale_color_manual(values = colors) + 
   scale_fill_manual(values = colors) +
-  theme_dviz_open() + 
+  theme_dviz_open(font_family = "Roboto Light") + 
   theme(#axis.ticks.y = element_blank(),
         #axis.ticks.x = element_blank(),
         axis.line.x = element_blank(),
@@ -267,7 +267,7 @@ p_marital <- ggplot(df_marital, aes(x = age, y = ..count.., fill = marital, colo
                      labels = c(0, 25, 50, 75, 100)) + 
   scale_color_manual(values = colors, name = "marital status") + 
   scale_fill_manual(values = colors, name = "marital status") +
-  theme_dviz_open() + 
+  theme_dviz_open(font_family = "Roboto Light") + 
   theme(#axis.ticks.y = element_blank(),
         axis.line.x = element_blank(),
         axis.line.y = element_blank(),
@@ -284,7 +284,7 @@ ggplot(mutate(df_health, health = fct_rev(health)), aes(x = age, y = ..count..))
   scale_x_continuous(limits = c(15, 98), expand = c(0, 0)) +
   scale_y_continuous(name = "count", expand = c(0, 0)) +
   scale_fill_manual(values = c("#b3b3b3a0", "#2b8cbed0"), name = "") +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(strip.text = element_text(margin = margin(0, 0, 0.2, 0, "cm")),
         legend.position = "bottom",
         legend.justification = "right",
@@ -302,7 +302,7 @@ ggplot(mutate(df_marital, marital = fct_rev(marital)), aes(x = age, y = ..count.
   scale_x_continuous(limits = c(15, 98), expand = c(0, 0)) +
   scale_y_continuous(name = "count", expand = c(0, 0)) +
   scale_fill_manual(values = c("#b3b3b3a0", "#2b8cbed0"), name = "") +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(strip.text = element_text(margin = margin(0, 0, 0.2, 0, "cm")),
         legend.position = "bottom",
         legend.justification = "right",

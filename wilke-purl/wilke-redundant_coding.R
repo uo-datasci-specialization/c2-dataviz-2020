@@ -1,6 +1,6 @@
 ## ----echo = FALSE, message = FALSE---------------------------------------
 # run setup script
-source(here::here("resources", "_common.R"))
+source(here::here("wilke-purl", "_common.R"))
 
 library(lubridate)
 library(ggridges)
@@ -30,7 +30,7 @@ iris_scatter <- iris_scatter_base +
              position = position_jitter(width = 0.01 * diff(range(iris$Sepal.Length)),
                                         height = 0.01 * diff(range(iris$Sepal.Width)),
                                         seed = 3942)) +
-  theme_dviz_grid(25) + 
+  theme_dviz_grid(25, font_family = "Roboto Light") + 
   theme(legend.title.align = 0.5,
         legend.text = element_text(face = "italic"),
         legend.spacing.y = unit(3.5, "pt"),
@@ -44,7 +44,7 @@ iris_scatter_small <- iris_scatter_base +
              position = position_jitter(width = 0.01 * diff(range(iris$Sepal.Length)),
                                         height = 0.01 * diff(range(iris$Sepal.Width)),
                                         seed = 3942)) +
-  theme_dviz_grid(12) + 
+  theme_dviz_grid(12, font_family = "Roboto Light") + 
   theme(legend.title.align = 0.5,
         legend.text = element_text(face = "italic"),
         legend.spacing.y = grid::unit(3, "pt"),
@@ -76,7 +76,7 @@ iris_scatter2 <- iris_scatter2_base +
   geom_point(position = position_jitter(width = 0.01 * diff(range(iris$Sepal.Length)),
                                         height = 0.01 * diff(range(iris$Sepal.Width)),
                                         seed = 3942)) +
-  theme_dviz_grid(25) +
+  theme_dviz_grid(25, font_family = "Roboto Light") +
   theme(legend.title.align = 0.5,
         legend.text = element_text(face = "italic"),
         legend.spacing.y = unit(3.5, "pt"),
@@ -90,7 +90,7 @@ iris_scatter2_small <- iris_scatter2_base +
              position = position_jitter(width = 0.01 * diff(range(iris$Sepal.Length)),
                                         height = 0.01 * diff(range(iris$Sepal.Width)),
                                         seed = 3942)) +
-  theme_dviz_grid(12) + 
+  theme_dviz_grid(12, font_family = "Roboto Light") + 
   theme(legend.title.align = 0.5,
         legend.text = element_text(face = "italic"),
         legend.spacing.y = grid::unit(3, "pt"),
@@ -114,7 +114,7 @@ price_plot_base <- ggplot(tech_stocks, aes(x = date, y = price_indexed, color = 
                      expand = c(0,0))
 
 stamp_bad(price_plot_base + 
-            theme_dviz_hgrid() + 
+            theme_dviz_hgrid(font_family = "Roboto Light") + 
             theme(plot.margin = margin(3, 7, 3, 0)))
 
 ## ----tech-stocks-good-legend, fig.cap = '(ref:tech-stocks-good-legend)'----
@@ -132,17 +132,17 @@ price_plot_base_good <- ggplot(tech_stocks, aes(x = date, y = price_indexed, col
                      expand = c(0,0))
 
 price_plot_base_good +
-  theme_dviz_hgrid() + 
+  theme_dviz_hgrid(font_family = "Roboto Light") + 
   theme(plot.margin = margin(3, 7, 3, 0))
 
 ## If there is a clear visual ordering in your data, make sure to match it in the legend.
 
 ## ----tech-stocks-good-legend-cvd, fig.width = 8.5, fig.asp = 0.6, fig.cap = '(ref:tech-stocks-good-legend-cvd)'----
-cvd_sim2(price_plot_base_good + theme_dviz_hgrid(12) + theme(plot.margin = margin(18, 6, 6, 0)),
+cvd_sim2(price_plot_base_good + theme_dviz_hgrid(12, font_family = "Roboto Light") + theme(plot.margin = margin(18, 6, 6, 0)),
          scale = 1, label_x = 0.)
 
 ## ----tech-stocks-good-no-legend, fig.cap = '(ref:tech-stocks-good-no-legend)'----
-price_plot <- price_plot_base_good + theme_dviz_hgrid()
+price_plot <- price_plot_base_good + theme_dviz_hgrid(font_family = "Roboto Light")
 
 yann <- axis_canvas(price_plot, axis = "y") +
   geom_text(data = filter(tech_stocks, date == "2017-06-02"),
@@ -216,7 +216,7 @@ iris_scatter3 <- ggplot(iris,
       limits = c(1.9, 4.6), expand = c(0, 0),
       name = "sepal width"
     ) +
-    theme_dviz_open()
+    theme_dviz_open(font_family = "Roboto Light")
 
 iris_scatter3
 
@@ -252,7 +252,7 @@ iris_p <- ggplot(iris_dens, aes(x = Sepal.Length, y = density, fill = Species, c
                     guide = "none") +
   scale_x_continuous(expand = c(0, 0), name = "sepal length") +
   scale_y_continuous(limits = c(0, 1.5), expand = c(0, 0)) +
-  theme_dviz_hgrid()
+  theme_dviz_hgrid(font_family = "Roboto Light")
   
 iris_p
 
@@ -325,7 +325,7 @@ lincoln_base <- ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Mon
   scale_y_discrete(name = NULL, expand = c(0, .2, 0, 2.6)) +
   scale_fill_continuous_sequential(palette = "Heat", l1 = 20, l2 = 100, c2 = 0) +
   guides(fill = "none") +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(
     axis.text.y = element_text(vjust = 0),
     plot.margin = margin(3, 7, 3, 0)

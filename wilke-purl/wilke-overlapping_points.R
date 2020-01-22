@@ -1,6 +1,6 @@
 ## ----echo = FALSE, message = FALSE---------------------------------------
 # run setup script
-source(here::here("resources", "_common.R"))
+source(here::here("wilke-purl", "_common.R"))
 
 library(lubridate)
 
@@ -17,7 +17,7 @@ p_mpg_solid <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
                      name="drive train",
                      breaks=c("f", "r", "4"),
                      labels=c("FWD", "RWD", "4WD")) +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(legend.position = c(.7, .8),
         plot.margin = margin(3, 7, 3, 0))
 
@@ -36,7 +36,7 @@ p_mpg_transp <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
                      name="drive train",
                      breaks=c("f", "r", "4"),
                      labels=c("FWD", "RWD", "4WD")) +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(legend.position = c(.7, .8),
         plot.margin = margin(3, 7, 3, 0))
 
@@ -58,7 +58,7 @@ p_mpg_jitter <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
                      name="drive train",
                      breaks=c("f", "r", "4"),
                      labels=c("FWD", "RWD", "4WD")) +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(legend.position = c(.7, .8),
         plot.margin = margin(3, 7, 3, 0))
 
@@ -80,7 +80,7 @@ p_mpg_jitter_extreme <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = 
                      name="drive train",
                      breaks=c("f", "r", "4"),
                      labels=c("FWD", "RWD", "4WD")) +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(legend.position = c(.7, .8),
         plot.margin = margin(3, 7, 3, 0))
 
@@ -100,7 +100,7 @@ p_flights_base <- ggplot(flight_delays, aes(`departure time`, `departure delay (
   scale_y_continuous(
     name = "departure delay (minutes)"
   ) +
-  theme_dviz_open() +
+  theme_dviz_open(font_family = "Roboto Light") +
   theme(plot.margin = margin(3, 7, 3, 0))
   
 p_flights_scatter <- p_flights_base + geom_point(alpha = 0.2)
@@ -147,7 +147,7 @@ blue_jays_base <- ggplot(blue_jays, aes(Mass, Head)) +
     expand = c(0, 0),
     name = "head length (mm)"
   ) +
-  theme_dviz_grid()
+  theme_dviz_grid(font_family = "Roboto Light")
 
 blue_jays_base + 
   stat_density_2d(color = "black", size = 0.4, binwidth = 0.004) +
@@ -174,7 +174,7 @@ blue_jays_base +
       override.aes = list(size = 2, linetype = 0)
     )
   ) +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(
     legend.position = c(1, 0),
     legend.justification = c(1, 0),
@@ -211,7 +211,7 @@ p <- ggplot(diamonds, aes(carat, price, color = cut)) +
     )
   ) +
   coord_cartesian(xlim = c(-.1, 3.2), ylim = c(240, 25000), expand = FALSE) + 
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   panel_border() +
   theme(
     plot.margin = margin(18, 7, 1, 0),
@@ -249,7 +249,7 @@ p <- ggplot(diamonds, aes(carat, price, color = cut)) +
     )
   ) +
   coord_cartesian(xlim = c(-.1, 2.3), ylim = c(240, 25000), expand = FALSE) + 
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   panel_border() +
   theme(
     plot.margin = margin(18, 7, 1, 0),
@@ -279,7 +279,7 @@ ggplot(diamonds, aes(carat, price)) +
   ) +
   coord_cartesian(xlim = c(-.1, 2.3), ylim = c(200, 25000), expand = FALSE) + 
   facet_wrap(~cut, scales = "free_x", labeller = labeller(cut = tolower)) +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   panel_border() +
   theme(
     legend.title = element_text(hjust = 0.5),

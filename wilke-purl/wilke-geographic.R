@@ -1,6 +1,6 @@
 ## ----echo = FALSE, message = FALSE, warning = FALSE---------------------------------------------------------------------------------------------------------
 # run setup script
-source("_common.R")
+source(here::here("wilke-purl", "_common.R")
 library(forcats)
 library(ggmap)
 library(statebins)
@@ -70,7 +70,7 @@ ggplot(world_sf) +
     expand = FALSE,
     crs = crs_mercator
   ) + 
-  theme_dviz_grid(font_size = 12, rel_small = 1) +
+  theme_dviz_grid(font_size = 12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     panel.background = element_rect(fill = "#56B4E950", color = "#56B4E950"),
     panel.grid.major = element_line(color = "gray30", size = 0.25),
@@ -127,7 +127,7 @@ ggplot(world_sf) +
   scale_x_continuous(name = NULL, breaks = seq(-120, 120, by = 60)) +
   scale_y_continuous(name = NULL, breaks = seq(-60, 60, by = 30)) +
   coord_sf(xlim = 0.95*xlim, ylim = 0.95*ylim, expand = FALSE, crs = crs_goode, ndiscr = 1000) + 
-  theme_dviz_grid(font_size = 12, rel_small = 1) +
+  theme_dviz_grid(font_size = 12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     panel.background = element_rect(fill = "#56B4E950", color = "white", size = 1),
     panel.grid.major = element_line(color = "gray30", size = 0.25),
@@ -141,7 +141,7 @@ cenlong <- -130
 draw_ocean(cenlat, cenlong, lwd = 0.25)
 draw_land(map_polys$usa, cenlat, cenlong, col = "#D00000D0") 
 draw_land(map_polys$world_no_usa, cenlat, cenlong, col = "#C0C0C0B0")
-par(family = dviz_font_family_condensed, ps = 12)
+par(family = "Roboto Light", ps = 12)
 text(
 #  x = c(0.38, 0.05, -0.4),
 #  y = c(0.15, 0.49, -0.1),
@@ -176,7 +176,7 @@ p <- ggplot(US_states_geoms$true_albers) +
   coord_sf(xlim = c(-6721002, 2685733), ylim = c(-1634610, 4888053), expand = FALSE, ndiscr = 1000) +
   scale_x_continuous(name = "longitude", breaks = -20*c(3:10)) +
   scale_y_continuous(name = "latitude", breaks = (1:9)*10) +
-  theme_dviz_grid(font_size = 12, rel_small = 1) +
+  theme_dviz_grid(font_size = 12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     panel.background = element_rect(fill = "#56B4E950"),
@@ -201,7 +201,7 @@ brown <- "#deb664"
 p <- ggplot(US_states_geoms$us_albers) + 
   geom_sf(fill = brown, color = "black", size = 0.5/.pt) +
   coord_sf(datum = NA, expand = FALSE) +
-  theme_dviz_map() +
+  theme_dviz_map(font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     plot.margin = margin(6, 6, 1, 1.5) 
@@ -214,7 +214,7 @@ stamp_bad(p)
 ggplot(US_states_geoms$albers_revised) + 
   geom_sf(fill = brown, color = "black", size = 0.5/.pt) +
   coord_sf(datum = NA, expand = FALSE) +
-  theme_dviz_map() +
+  theme_dviz_map(font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk")
   )
@@ -302,7 +302,7 @@ p1 <- ggmap(sfbay_maps$sfbay_bg)  +
     ),
     location ="tr"
   ) +
-  theme_dviz_map()
+  theme_dviz_map(font_family = "Roboto Light")
 p1
 
 
@@ -315,7 +315,7 @@ l1 <- ggmap(sfbay_maps$sfbay_bg) + labs(subtitle = "terrain") +
     size = 0.5,
     inherit.aes  = FALSE
   ) +
-  theme_dviz_map() +
+  theme_dviz_map(font_family = "Roboto Light") +
   theme(plot.subtitle = element_text(margin = margin(0, 0, 3, 0)))
 l2 <- ggmap(sfbay_maps$sfbay_lines) + labs(subtitle = "roads") + 
   geom_rect(
@@ -325,7 +325,7 @@ l2 <- ggmap(sfbay_maps$sfbay_lines) + labs(subtitle = "roads") +
     size = 0.5,
     inherit.aes  = FALSE
   ) +
-  theme_dviz_map() +
+  theme_dviz_map(font_family = "Roboto Light") +
   theme(plot.subtitle = element_text(margin = margin(0, 0, 3, 0)))
 l3 <- ggmap(sfbay_maps$sfbay_labels) + 
   geom_segment(
@@ -361,7 +361,7 @@ l3 <- ggmap(sfbay_maps$sfbay_labels) +
     location ="tr"
   ) +
  labs(subtitle = "city labels, scale bar") + 
- theme_dviz_map() +
+ theme_dviz_map(font_family = "Roboto Light") +
  theme(plot.subtitle = element_text(margin = margin(0, 0, 3, 0)))
 l4 <- ggmap(sfbay_maps$sfbay_bg) +
   geom_rect(
@@ -395,7 +395,7 @@ l4 <- ggmap(sfbay_maps$sfbay_bg) +
     size = .5*11/.pt
   ) +
   labs(subtitle = "wind turbines") +
-  theme_dviz_map() +
+  theme_dviz_map(font_family = "Roboto Light") +
   theme(plot.subtitle = element_text(margin = margin(0, 0, 3, 0)))
 plot_grid(
   l1, NULL, l2,
@@ -492,7 +492,7 @@ p2 <- ggmap(sfbay_maps$shiloh_terrain)  +
       )
     )
   ) +
-  theme_dviz_map(12) +
+  theme_dviz_map(12, font_family = "Roboto Light") +
   theme(
     legend.key.width = grid::unit(12, "pt")
   )
@@ -522,7 +522,7 @@ p <- ggplot(US_counties_income) +
       barheight = grid::unit(90, "pt")
     )
   ) +
-  theme_dviz_map(12, rel_small = 1) +
+  theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     legend.position = c(0, 1),
@@ -557,7 +557,7 @@ p <- ggplot(US_counties_income) +
       barheight = grid::unit(90, "pt")
     )
   ) +
-  theme_dviz_map(12, rel_small = 1) +
+  theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     legend.position = c(0, 1),
@@ -593,7 +593,7 @@ ggdraw(align_legend(p))
 ##       barheight = grid::unit(90, "pt")
 ##     )
 ##   ) +
-##   theme_dviz_map(12, rel_small = 1) +
+##   theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
 ##   theme(
 ##     #plot.background = element_rect(fill = "cornsilk"),
 ##     legend.position = c(0, 1),
@@ -633,7 +633,7 @@ p <- ggplot(US_counties_income) +
       reverse = TRUE
     )
   ) +
-  theme_dviz_map(12, rel_small = 1) +
+  theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     legend.position = c(0, 1),
@@ -674,7 +674,7 @@ p <- ggplot(US_income, aes(fill = income_bins)) +
       reverse = TRUE
     )
   ) +
-  theme_dviz_map(12, rel_small = 1) +
+  theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     legend.position = c(0, 1),
@@ -705,7 +705,7 @@ p <- ggplot(US_income_cartogram, aes(fill = income_bins)) +
       reverse = TRUE
     )
   ) +
-  theme_dviz_map(12, rel_small = 1) +
+  theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     legend.position = c(0, 1),
@@ -723,7 +723,7 @@ p
 ## ----median-income-statebins, fig.asp = 0.62, fig.cap = '(ref:median-income-statebins)'---------------------------------------------------------------------
 filter(US_income, name != "Puerto Rico", GEOID != "11") %>% # remove Puerto Rico and DC
   ggplot(aes(state = name, fill = income_bins)) +
-  geom_statebins(family = dviz.supp::dviz_font_family,
+  geom_statebins(family = "Roboto Light",
                  lbl_size = 14/.pt) +
   expand_limits(x = -1.3) + # make space for legend
   coord_equal(expand = FALSE) +
@@ -737,7 +737,7 @@ filter(US_income, name != "Puerto Rico", GEOID != "11") %>% # remove Puerto Rico
       reverse = TRUE
     )
   ) +
-  theme_dviz_map(12, rel_small = 1) +
+  theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
   theme(
     #plot.background = element_rect(fill = "cornsilk"),
     legend.background = element_blank(),
@@ -783,10 +783,10 @@ house_prices %>%
   ) +
   coord_cartesian(clip = "off") +
   facet_geo(~state, grid = "us_state_grid1", labeller = adjust_labels) +
-  theme_dviz_grid(12, dviz_font_family_condensed, rel_small = 10/12) +
+  theme_dviz_grid(12, font_family = "Roboto Light", rel_small = 10/12) +
   theme(
     strip.text = element_text(
-      family = dviz_font_family_condensed,
+      family = "Roboto Light",
       margin = margin(3, 3, 3, 3)
     ),
     axis.line.x = element_blank(),

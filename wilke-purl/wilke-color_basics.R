@@ -1,6 +1,6 @@
 ## ----echo = FALSE, message = FALSE---------------------------------------
 # run setup script
-source(here::here("resources", "_common.R"))
+source(here::here("wilke-purl", "_common.R"))
 
 ## ----qualitative-scales, fig.width=6, fig.asp=3*.14, fig.cap = '(ref:qualitative-scales)'----
 p1 <- gg_color_swatches(7, title_family = dviz_font_family) + 
@@ -34,7 +34,7 @@ ggplot(popgrowth_df, aes(x = state, y = 100*popgrowth, fill = region)) +
                      name = "percent population growth, 2000 to 2010") +
   scale_fill_manual(values = region_colors) +
   coord_flip() + 
-  theme_dviz_vgrid(12, rel_small = 1) +
+  theme_dviz_vgrid(12, rel_small = 1, font_family = "Roboto Light") +
   theme(axis.title.y = element_blank(),
         axis.line.y = element_blank(),
         axis.ticks.length = unit(0, "pt"),
@@ -69,7 +69,7 @@ texas_income %>% st_transform(crs = texas_crs) %>%
   ggplot(aes(fill = estimate)) + 
   geom_sf(color = "white") + 
   coord_sf(xlim = texas_xlim, datum = NA) +
-  theme_dviz_map() + 
+  theme_dviz_map(font_family = "Roboto Light") + 
   scale_fill_distiller(
     palette = "Blues", type = 'seq', na.value = "grey60", direction = 1,
     name = "annual median income",
@@ -108,7 +108,7 @@ texas_race %>% st_sf() %>%
   ggplot(aes(fill = pct)) +
   geom_sf(color = "white") +
   coord_sf(xlim = texas_xlim, datum = NA) + 
-  theme_dviz_map() +
+  theme_dviz_map(font_family = "Roboto Light") +
   scale_fill_continuous_divergingx(
     palette = "Earth",
     mid = 50,
@@ -171,7 +171,7 @@ ggplot(popgrowth_hilight, aes(x = state, y = 100*popgrowth, fill = region)) +
   scale_fill_manual(values = region_colors_bars,
                     breaks = c("West", "South", "Midwest", "Northeast")) +
   coord_flip() + 
-  theme_dviz_vgrid(12, rel_small = 1) +
+  theme_dviz_vgrid(12, rel_small = 1, font_family = "Roboto Light") +
   theme(text = element_text(color = "gray30"),
         axis.text.x = element_text(color = "gray30"),
         axis.title.y = element_blank(),
@@ -203,5 +203,5 @@ ggplot(male_Aus, aes(x=height, y=pcBfat, shape=sport, color = sport, fill = spor
   scale_fill_manual(values = fills) +
   xlab("height (cm)") +
   ylab("% body fat") +
-  theme_dviz_grid()
+  theme_dviz_grid(font_family = "Roboto Light")
 

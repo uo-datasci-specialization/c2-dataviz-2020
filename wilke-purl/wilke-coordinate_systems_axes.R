@@ -38,7 +38,7 @@ cartesian <- ggplot(df_points, aes(x, y)) +
   coord_fixed(xlim = c(-2.2, 3.2), ylim = c(-2.2, 2.2), expand = FALSE) +
   xlab("x axis") +
   ylab("y axis") +
-  theme_dviz_grid(25) +
+  theme_dviz_grid(25, font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"))
 
 ## ----temperature-normals-Houston, fig.width = 6, fig.asp = 3/4, fig.cap = '(ref:temperature-normals-Houston)'----
@@ -77,7 +77,7 @@ temp_plot <- ggplot(temps_wide_label, aes(x = date, y = `Houston`)) +
                labels = c("Jan", "Apr", "Jul", "Oct", "Jan"), expand = c(2/366, 0)) + 
   scale_y_continuous(limits = c(50, 90),
                      name = "temperature (°F)") +
-  theme_dviz_grid(25) +
+  theme_dviz_grid(25, font_family = "Roboto Light") +
   theme(plot.margin = margin(3, 12, 12, 0))
 
 plot_grid(plot_grid(temp_plot, temp_plot, rel_widths = c(1, 2), labels = "auto"),
@@ -95,7 +95,7 @@ tempsplot_F <- ggplot(temps_wide_label, aes(x = `San Diego`, y = `Houston`)) +
   scale_x_continuous(breaks = c(10*(5:8))) +
   xlab("temperature in San Diego (°F)") +
   ylab("temperature in Houston (°F)") +
-  theme_dviz_grid(25) +
+  theme_dviz_grid(25, font_family = "Roboto Light") +
   theme(plot.margin = margin(3, 14, 3, 0))
 
 # Fahrenheit to Celsius conversion
@@ -113,7 +113,7 @@ tempsplot_C <- ggplot(temps_wide_label, aes(x = F2C(`San Diego`), y = F2C(`Houst
   scale_x_continuous(breaks = c(5*(2:6))) +
   xlab("temperature in San Diego (°C)") +
   ylab("temperature in Houston (°C)") +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(plot.margin = margin(3, 14, 3, 0))
 
 
@@ -125,7 +125,7 @@ df <- data.frame(x = c(1, 3.16, 10, 31.6, 100))
 xaxis_lin <- ggplot(df, aes(x, y = 1)) + 
   geom_point(size = 3, color = "#0072B2") + 
   scale_y_continuous(limits = c(0.8, 1.2), expand = c(0, 0), breaks = 1) +
-  theme_dviz_grid(14, rel_large = 1) +
+  theme_dviz_grid(14, rel_large = 1, font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"),
         axis.text.y = element_blank(),
         axis.title.y = element_blank(),
@@ -136,7 +136,7 @@ xaxis_lin <- ggplot(df, aes(x, y = 1)) +
 xaxis_log <- ggplot(df, aes(log10(x), y = 1)) + 
   geom_point(size = 3, color = "#0072B2") + 
   scale_y_continuous(limits = c(0.8, 1.2), expand = c(0, 0), breaks = 1) +
-  theme_dviz_grid(14, rel_large = 1) +
+  theme_dviz_grid(14, rel_large = 1, font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"),
         axis.text.y = element_blank(),
         axis.title.y = element_blank(),
@@ -184,7 +184,7 @@ ggplot(tx_counties, aes(x = index, y = popratio)) +
   scale_x_continuous(limits = c(.5, nrow(tx_counties) + .5), expand = c(0, 0),
                      breaks = NULL, #c(1, 50*(1:5)),
                      name = "Texas counties, from most to least populous") +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(axis.line = element_blank(),
         plot.margin = margin(3, 7, 3, 0))
 
@@ -197,7 +197,7 @@ counties_lin <- ggplot(tx_counties, aes(x = index, y = popratio)) +
   scale_x_continuous(limits = c(.5, nrow(tx_counties) + .5), expand = c(0, 0),
                      breaks = NULL, #c(1, 50*(1:5)),
                      name = "Texas counties, from most to least populous") +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(axis.line = element_blank(),
         plot.margin = margin(3, 7, 3, 0))
 
@@ -209,7 +209,7 @@ df <- data.frame(x = c(0, 1, 4, 9, 16, 25, 36, 49))
 xaxis_lin <- ggplot(df, aes(x, y = 1)) + 
   geom_point(size = 3, color = "#0072B2") + 
   scale_y_continuous(limits = c(0.8, 1.2), expand = c(0, 0), breaks = 1) +
-  theme_dviz_grid(14, rel_large = 1) +
+  theme_dviz_grid(14, rel_large = 1, font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"),
         axis.text.y = element_blank(),
         axis.title.y = element_blank(),
@@ -220,7 +220,7 @@ xaxis_lin <- ggplot(df, aes(x, y = 1)) +
 xaxis_sqrt <- ggplot(df, aes(sqrt(x), y = 1)) + 
   geom_point(size = 3, color = "#0072B2") + 
   scale_y_continuous(limits = c(0.8, 1.2), expand = c(0, 0), breaks = 1) +
-  theme_dviz_grid(14, rel_large = 1) +
+  theme_dviz_grid(14, rel_large = 1, font_family = "Roboto Light") +
   theme(axis.ticks.length = grid::unit(0, "pt"),
         axis.text.y = element_blank(),
         axis.title.y = element_blank(),
@@ -262,7 +262,7 @@ areas_base <- ggplot(northeast_areas, aes(x = state_abr, y = area)) +
   geom_col(fill = "#56B4E9") +
   ylab("area (square miles)") +
   xlab("state") +
-  theme_dviz_hgrid() +
+  theme_dviz_hgrid(font_family = "Roboto Light") +
   theme(plot.margin = margin(3, 14, 3, 0))
 
 p1 <- areas_base + scale_y_sqrt(limits = c(0, 55000), breaks = c(0, 1000, 5000, 10000*(1:5)), 
@@ -296,7 +296,7 @@ p_cart <- ggplot(df_points, aes(x, y)) +
   coord_fixed() +
   xlab("x axis") +
   ylab("y axis") +
-  theme_dviz_grid(12) +
+  theme_dviz_grid(12, font_family = "Roboto Light") +
   theme(axis.ticks = element_blank(),
         axis.ticks.length = grid::unit(0, "pt"),
         plot.margin = margin(3, 12, 3, 0))
@@ -306,8 +306,8 @@ p_polar <- ggplot(df_points, aes(x, y)) +
   geom_segment(
     data = df_segments,
     aes(x = x0, xend = x1, y = y0, yend = y1),
-    size = theme_dviz_grid()$panel.grid$size,
-    color = theme_dviz_grid()$panel.grid$colour,
+    size = theme_dviz_grid(font_family = "Roboto Light")$panel.grid$size,
+    color = theme_dviz_grid(font_family = "Roboto Light")$panel.grid$colour,
     inherit.aes = FALSE
   ) +
   geom_point(size = 2, color = "#0072B2") +
@@ -320,7 +320,7 @@ p_polar <- ggplot(df_points, aes(x, y)) +
   coord_polar() +
   xlab("x values (circular axis)") +
   ylab("y values (radial axis)") +
-  theme_dviz_grid(12) +
+  theme_dviz_grid(12, font_family = "Roboto Light") +
   background_grid(major = "none") +
   theme(axis.line.x = element_blank(),
         axis.ticks = element_line(color = "black"),
@@ -347,7 +347,7 @@ ggplot(temps_long, aes(x = date, y = temperature, color = location)) +
                      name = "temperature (°F)") +
   scale_color_OkabeIto(order = c(1:3, 7), name = NULL) +
   coord_polar(theta = "x", start = pi, direction = -1) +
-  theme_dviz_grid()
+  theme_dviz_grid(font_family = "Roboto Light")
 
 ## ----worldmap-four-projections, fig.width = 8.5, fig.cap = '(ref:worldmap-four-projections)'----
 # library(sf)
@@ -370,7 +370,7 @@ ggplot(temps_long, aes(x = date, y = temperature, color = location)) +
 #     breaks = seq(-80, 80, by = 20),
 #     labels = parse(text = c("80*degree*S", "NA", "40*degree*S", "NA", "0*degree", "NA", "40*degree*N", "NA", "80*degree*N"))
 #   ) +
-#   theme_dviz_grid(12) +
+#   theme_dviz_grid(12, font_family = "Roboto Light") +
 #   theme(
 #     panel.background = element_rect(fill = "#56B4E950", color = "grey30", size = 0.5),
 #     panel.grid.major = element_line(color = "gray30", size = 0.25),
@@ -439,7 +439,7 @@ ggplot(temps_long, aes(x = date, y = temperature, color = location)) +
 #     breaks = seq(-80, 80, by = 20)
 #   ) + 
 #   coord_sf(xlim = 0.95*xlim_goode, ylim = 0.95*ylim_goode, expand = FALSE, crs = crs_goode, ndiscr = 1000) + 
-#   theme_dviz_grid(12, rel_small = 1) +
+#   theme_dviz_grid(12, rel_small = 1, font_family = "Roboto Light") +
 #   theme(
 #     panel.background = element_rect(fill = "#56B4E950", color = "white", size = 1),
 #     panel.grid.major = element_line(color = "gray30", size = 0.25),
@@ -491,7 +491,7 @@ ggplot(temps_long, aes(x = date, y = temperature, color = location)) +
 #     breaks = seq(-80, 80, by = 20)
 #   ) +
 #   coord_sf(xlim = 0.95*xlim_robin, ylim = 0.95*ylim_robin, expand = FALSE, crs = crs_robin, ndiscr = 1000) + 
-#   theme_dviz_grid(12, rel_small = 1) +
+#   theme_dviz_grid(12, rel_small = 1, font_family = "Roboto Light") +
 #   theme(
 #     panel.background = element_rect(fill = "#56B4E950", color = "white", size = 1),
 #     panel.grid.major = element_line(color = "gray30", size = 0.25),
@@ -527,7 +527,7 @@ ggplot(temps_long, aes(x = date, y = temperature, color = location)) +
 #   geom_sf(data = world_wintri, fill = "#E69F00B0", color = "black", size = 0.5/.pt) + 
 #   geom_sf(data = wintri_outline, fill = NA, color = "grey30", size = 0.5/.pt) +
 #   coord_sf(datum = NA, expand = FALSE) +
-#   theme_dviz_grid(12, rel_small = 1) +
+#   theme_dviz_grid(12, rel_small = 1, font_family = "Roboto Light") +
 #   theme(
 #     plot.margin = margin(6, 0, 3, 0)
 #   )

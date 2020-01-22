@@ -41,7 +41,7 @@ corruption %>% filter(year == 2015) %>% na.omit() %>%
     guides(color = guide_legend(nrow = 1,
       override.aes = list(linetype = c(rep("blank", 5), "solid"),
                           shape = c(rep(21, 5), NA)))) +
-    theme_dviz_hgrid(12, rel_small = 1) +
+    theme_dviz_hgrid(12, rel_small = 1, font_family = "Roboto Light") +
     theme(legend.position = "top",
           legend.justification = "right",
           legend.text = element_text(size = 10)) -> plot_corrupt_base
@@ -68,12 +68,12 @@ ggdraw() + draw_image(here::here("wilke-purl", "figures", "corruption_plot_base.
 plot_corrupt_title <- ggdraw() +
   labs(title = "Corruption and human development",
        subtitle = "The most developed countries experience the least corruption") +
-  theme_dviz_map(12, rel_small = 1) +
+  theme_dviz_map(12, rel_small = 1, font_family = "Roboto Light") +
   theme(plot.margin = margin(6, 0, 0, 0))
 
 plot_corrupt_caption <- ggplot() +
   labs(caption = "Data sources: Transparency International & UN Human Development Report") +
-  theme_dviz_map(12) +
+  theme_dviz_map(12, font_family = "Roboto Light") +
   theme(plot.margin = margin(0, 0, 6, 0))
 
 
@@ -120,7 +120,7 @@ ggplot(blue_jays, aes(Mass, Head, size = Skull, fill = KnownSex)) +
       override.aes = list(fill = "gray40")
     )
   ) +
-  theme_dviz_grid() +
+  theme_dviz_grid(font_family = "Roboto Light") +
   theme(
     legend.margin = margin(0, 0, 0, 20),
     legend.position = "top",
@@ -150,7 +150,7 @@ price_plot_base <- ggplot(tech_stocks, aes(x = date, y = price_indexed, color = 
     limits = c(0, 560),
     expand = c(0,0)
   ) +
-  theme_dviz_hgrid(25) + 
+  theme_dviz_hgrid(25, font_family = "Roboto Light") + 
   theme(plot.margin = margin(3, 7, 3, 0))
 
 price_plot_base + xlab(NULL) + ylab("stock price, indexed")
