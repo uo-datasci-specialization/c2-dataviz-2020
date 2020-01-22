@@ -12,9 +12,9 @@ output:
 |:------:| :---------------------------------------------: | :------------| :-------| 
 | 1      | [Collaborating with GitHub](lab1.html)          | 1/8/20       | 1/13/20 | 
 | 2      | [Mapping data to aesthetics](lab2.html)         | 1/15/20      | 1/20/20 |
-| 3      | Visual perception                  | 1/29/20      | 2/3/20  | 
-| 4      | Color                              | 2/5/20       | 2/10/20 | 
-| 5      | Refining plots for communication   | 2/12/20      | 2/17/20 | 
+| 3      | Visual perception                  | 1/29/20      | 2/5/20  | 
+| 4      | Color                              | 2/5/20       | 2/12/20 | 
+| 5      | Refining plots for communication   | 2/12/20      | 2/19/20 | 
 
 # Homework
 
