@@ -95,7 +95,8 @@ comic_characters <-
 
 ```{r answers, include=FALSE}
 library(fivethirtyeight)
-theme_set(theme_minimal())
+library(tidyverse)
+theme_set(theme_minimal(25))
 
 g <- google_trends %>% 
   pivot_longer(starts_with("hurricane"), 
@@ -136,11 +137,13 @@ ggplot(g, aes(date, interest)) +
                   color = hurricane,
                   ymin = 0,
                   ymax = interest), alpha = 0.8) + 
-  geom_vline(aes(xintercept = date), landfall,
-             color = "gray80", 
+  geom_vline(aes(xintercept = date), 
+             data = landfall,
+             color = "gray40", 
              lty = "dashed") +
-  geom_text(aes(x = date, y = 80, label = hurricane), landfall,
-            color = "gray80",
+  geom_text(aes(x = date, y = 80, label = hurricane), 
+            data = landfall,
+            color = "gray40",
             nudge_x = 2) +
   labs(x = "Date", 
        y = "Google Trends",
@@ -172,7 +175,8 @@ tv <- tv_states %>%
                         levels = c("florida", "texas", "puerto_rico")))
 
 ggplot(tv, aes(date, percentage)) +
-  geom_ribbon(aes(fill = state, ymin = 0, ymax = percentage), color = "white") +
+  geom_ribbon(aes(fill = state, ymin = 0, ymax = percentage), 
+    color = "white") +
   scale_fill_manual(values = c("#FC477A","#EA6533", "#37B9C2"))
 
 percents <- comic_characters %>% 
@@ -190,7 +194,7 @@ ggplot(percents, aes(x = fct_reorder(sex, n), y = percent)) +
   geom_col(aes(fill = fct_reorder(sex, n)), position = "dodge") +
   coord_flip() +
   scale_y_continuous(expand = c(0, 0.4)) +
-  geom_text(aes(label = as.character(paste0(round(percent, 2), "%"))), nudge_y = 5) +
+  geom_text(aes(label = as.character(paste0(round(percent, 2), "%"))), nudge_y = 2) +
   guides(fill = "none") +
   labs(title = "Gender of Comic Book Characters",
        y = "Percent",
