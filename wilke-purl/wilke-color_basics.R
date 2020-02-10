@@ -153,23 +153,39 @@ popgrowth_hilight <- left_join(US_census, US_regions) %>%
               area = sum(area)) %>%
     arrange(popgrowth) %>%
     ungroup() %>%
-    mutate(region = ifelse(state %in% c("Texas", "Louisiana"), "highlight", region)) %>%
-    mutate(state = factor(state, levels = state),
-           region = factor(region, levels = c("West", "South", "Midwest", "Northeast", "highlight")))
+    mutate(state = factor(state, levels = state))
+    # mutate(region = ifelse(state %in% c("Texas", "Louisiana"), "highlight", region)) %>%
+    # mutate(state = factor(state, levels = state),
+    #        region = factor(region, levels = c("West", "South", "Midwest", "Northeast", "highlight")))
+
+reg_colors <- desaturate(lighten(c("#E69F00", "#56B4E9", "#009E73", "#F0E442"), .4), .8)
+
+region_col_df <- tibble(region = c("West", "South", "Midwest", "Northeast"),
+                        fill_col = reg_colors)
+
+popgrowth_hilight <- popgrowth_hilight %>% 
+  left_join(region_col_df) %>% 
+  mutate(fill_col = ifelse(state == "Texas" | state == "Louisiana", 
+                           darken("#56B4E9", .3),
+                           fill_col))
 
 # make color and fontface vector in order of the states
-region_colors_bars <- c(desaturate(lighten(c("#E69F00", "#56B4E9", "#009E73", "#F0E442"), .4), .8), darken("#56B4E9", .3))
-region_colors_axis <- c(rep("gray30", 4), darken("#56B4E9", .4))
-region_fontface <- c(rep("plain", 4), "bold")
-state_colors <- region_colors_axis[as.numeric(popgrowth_hilight$region[order(popgrowth_hilight$state)])]
-state_fontface <- region_fontface[as.numeric(popgrowth_hilight$region[order(popgrowth_hilight$state)])]
+state_colors <- ifelse(
+  popgrowth_hilight$state %in% c("Texas", "Louisiana"), 
+  darken("#56B4E9", .4),
+  "gray30"
+)
+state_font <- ifelse(
+  popgrowth_hilight$state %in% c("Texas", "Louisiana"), 
+  "Roboto Black", 
+  "Roboto Light"
+)
 
-ggplot(popgrowth_hilight, aes(x = state, y = 100*popgrowth, fill = region)) + 
+ggplot(popgrowth_hilight, aes(x = state, y = 100*popgrowth, fill = fill_col)) + 
   geom_col() + 
   scale_y_continuous(limits = c(-.6, 37.5), expand = c(0, 0),
                      name = "percent population growth, 2000 to 2010") +
-  scale_fill_manual(values = region_colors_bars,
-                    breaks = c("West", "South", "Midwest", "Northeast")) +
+  scale_fill_identity() +
   coord_flip() + 
   theme_dviz_vgrid(12, rel_small = 1, font_family = "Roboto Light") +
   theme(text = element_text(color = "gray30"),
@@ -178,7 +194,7 @@ ggplot(popgrowth_hilight, aes(x = state, y = 100*popgrowth, fill = region)) +
         axis.line.y = element_blank(),
         axis.ticks.length = unit(0, "pt"),
         axis.text.y = element_text(size = 10, color = state_colors,
-                                   face = state_fontface),
+                                   family = state_font),
         legend.position = c(.56, .68),
         legend.background = element_rect(fill = "#ffffffb0"))
 
