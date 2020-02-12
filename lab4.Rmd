@@ -1,0 +1,156 @@
+---
+title: "Lab 4"
+subtitle: "Colors"
+date: "Assigned 2/6/19, Due 2/11/19"
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    theme: "journal"
+    css: "website-custom.css"
+---
+
+# Overview
+The purpose of this lab is to use color to your advantage. You will be asked to
+use a variety of color palettes, and use color for its three main purposes: 
+(a) distinguish groups from each other, (b) represent data values, and (c)
+highlight particular data points.
+
+## Data
+We'll be working with the honey production data from #tidytuesday. [The repo](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-05-21) 
+contains the full data, but we'll work with just the cleaned up version, using
+the *honeyproduction.csv* file, which is posted on canvas or can be obtained by
+downloading the zip file from the repo. 
+
+# Assignment
+1. Visualize the total production of honey across years by state. Use color to
+highlight the west coast (Washington, Oregon, and California).
+2. Reproduce the plot according three different kinds of color blindness, as
+well as a desaturated version. 
+3. Reproduce the plot using a color blind safe pallette. 
+4. Download the file [here](https://github.com/cphalpert/census-regions/raw/master/us%20census%20bureau%20regions%20and%20divisions.csv) denoting the region and division of each state. 
+  + Join the file with your honey file. 
+  + Produce a bar plot displaying the average honey for each state across years. 
+  + Use color to highlight the region of the country the state is from. 
+  + Note patterns you notice. 
+5. Create a heatmap displaying the average honey production across years by region.
+6. Create at least one more plot of your choosing using color to distinguish,
+represent data values, or highlight. If you are interested in producing maps,
+I would recommend joining the data with the output from `
+ggplot2::map_data("state")`. But be careful with keys and that you don't end 
+up with a many-to-many join. See [here](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) 
+for additional help.
+
+```{r possible-answers, include=FALSE}
+knitr::opts_chunk$set(message = FALSE,
+                      warning = FALSE,
+                      echo = FALSE,
+                      fig.width = 10,
+                      fig.height = 10,
+                      dev.args = list(bg = "transparent"))
+
+library(tidyverse)
+library(gghighlight)
+library(colorblindr)
+
+theme_set(theme_minimal())
+
+west_coast <- c("WA", "OR", "CA")
+
+honey <- read_csv(here::here("data", "honeyproduction.csv"))
+
+ggplot(honey, aes(year, totalprod, group = state)) +
+  geom_line(color = "gray80") 
+
+p <- ggplot(honey, aes(year, totalprod, color = state)) +
+  geom_line() +
+  gghighlight(state %in% west_coast) +
+  facet_wrap(~state) 
+
+cvd_grid(p)
+
+p +
+  scale_color_OkabeIto()
+
+region <- rio::import("https://github.com/cphalpert/census-regions/raw/master/us%20census%20bureau%20regions%20and%20divisions.csv", 
+                      setclass = "tibble") %>%
+  janitor::clean_names() %>%
+  rename(state_name = state,
+         state = state_code)
+
+honey <- left_join(honey, region)
+
+by_year <- honey %>%
+  group_by(state, region) %>%
+  summarize(average_honey = mean(totalprod))
+
+ggplot(by_year, aes(fct_reorder(state, average_honey), average_honey)) +
+  geom_col(aes(fill = region),
+           color = "white",
+           alpha = 0.8) +
+  coord_flip() +
+  scale_y_continuous(expand = c(0,0)) +
+  scale_fill_OkabeIto(name = "Region") +
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_line(color = "gray70"),
+        panel.grid.minor.x = element_line(color = "gray70")) +
+  labs(x = "",
+       y = "Honey Production (lbs)")
+
+honey %>%
+  group_by(year, region) %>%
+  summarize(average_honey = mean(totalprod)/1e6) %>%
+ggplot(aes(year, fct_reorder(region, average_honey))) +
+  geom_tile(aes(fill = average_honey),
+            color = "gray90") +
+  scale_fill_viridis_c("Honey Production\n(Millions of lbs)\n",
+                       option = "magma") +
+  coord_fixed() + 
+  scale_x_discrete(expand = c(0, 0)) +
+  labs(x = "Year", 
+       y = "Region") +
+  theme(legend.position = c(0.20, 1.15),
+        legend.direction = "horizontal",
+        legend.key.size = unit(1, 'cm'),
+        legend.key.height = unit(.5,"cm"),
+        legend.title = element_text(size = 8))
+
+dir.create(here::here("lab4_files"))
+ggsave(here::here("lab4_files", "honey-heatmap.pdf"), 
+       width = 9,
+       device = cairo_pdf)
+
+states <- map_data("state") %>%
+  rename(state_name = region) %>%
+  mutate(state_name = stringr::str_to_title(state_name))
+
+honey2 <- honey %>%
+  select(state_name, year, totalprod) %>%
+  pivot_wider(names_from = "year", 
+              values_from = "totalprod") %>%
+  right_join(states) %>%
+  pivot_longer(cols = matches("\\d"),
+               names_to = "year", 
+               values_to = "honey_prod")
+
+ggplot(honey2) +
+  geom_polygon(aes(long, lat, group = group, fill = honey_prod/1e6)) +
+  coord_fixed(1.3) +
+  facet_wrap(~year) +
+  scale_fill_viridis_c("Honey Production\n(Millions of lbs)",
+                       option = "magma", 
+                       labels = scales::comma) +
+  dviz.supp::theme_dviz_map(15, font_family = "Roboto Light") +
+  theme(legend.direction = "horizontal",
+        legend.position = "bottom",
+        legend.key.size = unit(2, 'cm'),
+        legend.key.height = unit(.5,"cm"))
+
+ggsave(here::here("lab4_files", "honeymap.pdf"), 
+       width = 6.5,
+       device = cairo_pdf)
+```
+
+
+# Finishing up
+When you have finished the above, upload your rendered (knit) HTML file to canvas.
