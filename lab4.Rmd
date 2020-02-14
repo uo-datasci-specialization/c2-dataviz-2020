@@ -24,16 +24,16 @@ downloading the zip file from the repo.
 
 # Assignment
 1. Visualize the total production of honey across years by state. Use color to
-highlight the west coast (Washington, Oregon, and California).
+highlight the west coast (Washington, Oregon, and California). Use different colors for each west coast state you highlight.
 2. Reproduce the plot according three different kinds of color blindness, as
 well as a desaturated version. 
 3. Reproduce the plot using a color blind safe pallette. 
 4. Download the file [here](https://github.com/cphalpert/census-regions/raw/master/us%20census%20bureau%20regions%20and%20divisions.csv) denoting the region and division of each state. 
   + Join the file with your honey file. 
-  + Produce a bar plot displaying the average honey for each state across years. 
+  + Produce a bar plot displaying the average honey for each state, collapsing across years. 
   + Use color to highlight the region of the country the state is from. 
   + Note patterns you notice. 
-5. Create a heatmap displaying the average honey production across years by region.
+5. Create a heatmap displaying the average honey production across years by region (averaging across states within region).
 6. Create at least one more plot of your choosing using color to distinguish,
 represent data values, or highlight. If you are interested in producing maps,
 I would recommend joining the data with the output from `
@@ -80,11 +80,11 @@ region <- rio::import("https://github.com/cphalpert/census-regions/raw/master/us
 
 honey <- left_join(honey, region)
 
-by_year <- honey %>%
-  group_by(state, region) %>%
+by_state <- honey %>%
+  group_by(state_name, region) %>%
   summarize(average_honey = mean(totalprod))
 
-ggplot(by_year, aes(fct_reorder(state, average_honey), average_honey)) +
+ggplot(by_state, aes(fct_reorder(state_name, average_honey), average_honey)) +
   geom_col(aes(fill = region),
            color = "white",
            alpha = 0.8) +
