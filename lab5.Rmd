@@ -1,0 +1,182 @@
+---
+title: "Lab 5"
+subtitle: "Refining plots"
+date: "Assigned 2/13/19, Due 2/18/19"
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    theme: "journal"
+    css: "website-custom.css"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE,
+                      warning = FALSE,
+                      echo = FALSE,
+                      dev.args = list(bg="transparent"))
+
+```
+
+## Background
+For this lab we will use data from [kaggle](https://www.kaggle.com) again. You can download the data directly [from kaggle](https://www.kaggle.com/noriuk/us-education-datasets-unification-project) (requires you create an account with kaggle) or from canvas (in the module for this class). We will specifically be working with the `states_all.csv` dataset.
+
+Please see [here](https://www.kaggle.com/noriuk/us-education-datasets-unification-project) for more information about the data.
+
+## Part 1
+Your colleague wants to explore differences in revenue over time by state. They have worked **really** hard but so far the best they've come up with is the below, which they feel is still not satistifactory. Your goal here is to help your colleague improve their plot.
+
+Start a new R Markdown file and load the `states_all.csv` file. 
+
+```{r echo = FALSE, fig.width = 13}
+library(tidyverse)
+library(ggrepel)
+
+ed <- read_csv(here::here("data", "states_all.csv")) %>% 
+  janitor::clean_names()
+
+rev <- ed %>% 
+  select(state, year, contains("revenue")) %>% 
+  select(-starts_with("total")) %>% 
+  pivot_longer(cols = ends_with("revenue"),
+               names_to = "source",
+               values_to = "revenue",
+               names_pattern = "(.+)_.+") %>%
+  mutate(source = str_to_title(source),
+         state = str_to_title(state))
+  
+
+ggplot(rev, aes(year, revenue)) +
+  geom_line(aes(color = state)) +
+  facet_wrap(~source)
+```
+
+1. In a new code chunk (separate from the chunk you used to import the data) reproduce the plot.
+
+2. Briefly Explain (outside the code chunk) a few things that could be done to improve the plot, and why. I'm less interested in the code here and more interested in why you feel the changes would improve the plot.
+
+3. In a new code chunk, make at least 3 revisions to the plot that you suggested above.
+
+```{r some_mods, include = FALSE}
+rev <- rev %>% 
+  mutate(state = str_to_title(str_replace_all(state, "_", " ")),
+         state = ifelse(state == "District Of Columbia", 
+                        "District of Columbia", 
+                        state))
+
+states <- read_csv("https://github.com/jakevdp/data-USstates/raw/master/state-abbrevs.csv") %>%
+  select(-abbreviation)
+
+rev2 <- semi_join(rev, states)  
+
+to_label <- rev %>% 
+  filter(!is.na(revenue)) %>% 
+  group_by(source) %>% 
+  filter(year == max(year)) %>% 
+  arrange(desc(revenue)) %>% 
+  slice(seq(1, 51, 10))
+
+ggplot(rev, aes(year, revenue)) +
+  geom_line(aes(group = state), 
+            alpha = 0.8,
+            color = "gray") +
+  geom_line(aes(group = state), 
+            data = semi_join(rev, to_label, by = c("state", "source")),
+            size = 1.2,
+            color = "cornflowerblue") +
+  scale_y_log10(labels = scales::dollar) +
+  scale_x_continuous(limits = c(1992, 2030)) +
+  geom_text_repel(aes(label = state), 
+                  data = to_label,
+                  hjust = 0,
+                  nudge_x = 1,
+                  min.segment.length = 0,
+                  segment.color = "gray10",
+                  color = "gray40") +
+  facet_wrap(~source) +
+  theme_minimal(20)
+```
+
+## Part 2
+After all your hard and wonderful work, your colleague tells you that what they're **really** interested in is how average total revenue relates to achievement. They have decided they want to collapse the data across years and see how the average revenue for states relates to achievement. They feel it's important to normalize revenue with respect to total enrollment (`total_revenue/enroll`). They understand this will limit their sample some due to missing data.
+
+After conducting some basic data manipulations, they have ended up with a data set that looks like this
+
+```{r data-transform}
+rev3 <- ed %>% 
+  select(state, year, total_revenue, enroll, 
+         avg_reading_4_score, avg_math_4_score,
+         avg_reading_8_score, avg_math_8_score) %>% 
+  drop_na(total_revenue, enroll, 
+          avg_reading_4_score, avg_math_4_score,
+          avg_reading_8_score, avg_math_8_score) %>% 
+  mutate(normalized_revenue = total_revenue/enroll,
+         state = str_replace_all(state, "_", " "),
+         state = str_to_title(state)) %>% 
+  pivot_longer(starts_with("avg"), 
+               names_pattern = ".+_(.+)_(\\d).+",
+               names_to = c("content", "grade"),
+               names_ptype = list(content = character(),
+                                  grade = integer()),
+               values_to = "score") %>% 
+  mutate(content = str_to_title(content)) %>% 
+  group_by(state, content, grade) %>% 
+  summarize(avg_revenue = mean(normalized_revenue, na.rm = TRUE),
+            avg_score = mean(score, na.rm = TRUE))
+
+head(rev3)
+
+tail(rev3)
+  
+```
+
+And an initial plot that looks like this:
+
+```{r, scatter1}
+ggplot(rev3, aes(avg_revenue, avg_score)) +
+  geom_point() +
+  facet_grid(grade ~ content)
+```
+
+
+1. Help your colleague reproduce the plot to highlight the five highest and lowest revenue states, after accounting for enrollment. Make any other modifications you feel would help aid communication.
+
+```{r scatter2, include = FALSE}
+rev3 <- rev3 %>%
+  mutate(grade = paste("Grade", grade))
+
+#library(gghighlight) # another option - I chose not to use it here
+top5 <- rev3 %>% 
+  group_by(content, grade) %>% 
+  top_n(5, avg_revenue)
+
+# top5 %>%
+#   arrange(content, grade)
+
+bot_5 <- rev3 %>% 
+  group_by(content, grade) %>% 
+  top_n(-5, avg_revenue)
+
+ggplot(rev3, aes(avg_revenue, avg_score)) +
+  geom_point(color = "gray70") +
+  geom_point(color = "#DC4F44", data = bind_rows(top5, bot_5)) +
+  geom_text_repel(aes(label = state),
+                  data = bind_rows(top5, bot_5)) +
+  facet_grid(grade ~ content, scales = "free_y") +
+  labs(x = "Average Revenue",
+       y = "Average Score",
+       title = "Relation between total revenue and achievement",
+       subtitle = "Top and bottom five states in terms of revenue highlighted") +
+  theme_minimal(20) +
+  theme(plot.title.position = "plot",
+        axis.title = element_text(colour = "gray30"),
+        plot.title = element_text(colour = "gray30"),
+        plot.subtitle = element_text(colour = "gray30"))
+
+ggsave(here::here("lab5_files", "final-highlight-plot.png"),
+       width = 12, 
+       height = 8)
+```
+
+
+

@@ -404,26 +404,26 @@ div.tocify {
 <h2>Part 2</h2>
 <p>After all your hard and wonderful work, your colleague tells you that what they’re <strong>really</strong> interested in is how average total revenue relates to achievement. They have decided they want to collapse the data across years and see how the average revenue for states relates to achievement. They feel it’s important to normalize revenue with respect to total enrollment (<code>total_revenue/enroll</code>). They understand this will limit their sample some due to missing data.</p>
 <p>After conducting some basic data manipulations, they have ended up with a data set that looks like this</p>
-<pre><code>## # A tibble: 6 x 4
-## # Groups:   state [3]
-##   state   content avg_revenue avg_score
-##   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
-## 1 Alabama Math       8.353728  264.6971
-## 2 Alabama Reading    8.353728  264.7919
-## 3 Alaska  Math      15.18719   280.8197
-## 4 Alaska  Reading   15.18719   264.4845
-## 5 Arizona Math       8.006919  275.4032
-## 6 Arizona Reading    8.006919  264.1375</code></pre>
-<pre><code>## # A tibble: 6 x 4
-## # Groups:   state [3]
-##   state         content avg_revenue avg_score
-##   &lt;chr&gt;         &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
-## 1 West virginia Math       10.58383  271.2867
-## 2 West virginia Reading    10.58383  264.5445
-## 3 Wisconsin     Math       11.58851  286.4443
-## 4 Wisconsin     Reading    11.58851  265.8068
-## 5 Wyoming       Math       15.76345  284.5035
-## 6 Wyoming       Reading    15.76345  263.1064</code></pre>
+<pre><code>## # A tibble: 6 x 5
+## # Groups:   state, content [3]
+##   state   content grade avg_revenue avg_score
+##   &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Alabama Math        4    8.353728  225.5124
+## 2 Alabama Math        8    8.353728  264.6971
+## 3 Alabama Reading     4    8.353728  213.4664
+## 4 Alabama Reading     8    8.353728  264.7919
+## 5 Alaska  Math        4   16.08845   235.9712
+## 6 Alaska  Math        8   16.08845   281.2735</code></pre>
+<pre><code>## # A tibble: 6 x 5
+## # Groups:   state, content [3]
+##   state     content grade avg_revenue avg_score
+##   &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Wisconsin Reading     4    11.58851  221.9016
+## 2 Wisconsin Reading     8    11.58851  265.8068
+## 3 Wyoming   Math        4    15.76345  241.2838
+## 4 Wyoming   Math        8    15.76345  284.5035
+## 5 Wyoming   Reading     4    15.76345  223.7952
+## 6 Wyoming   Reading     8    15.76345  263.1064</code></pre>
 <p>And an initial plot that looks like this:</p>
 <p><img src="lab5_files/figure-html/scatter1-1.png" width="672" /></p>
 <ol style="list-style-type: decimal">
