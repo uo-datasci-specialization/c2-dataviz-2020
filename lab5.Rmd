@@ -70,16 +70,17 @@ states <- read_csv("https://github.com/jakevdp/data-USstates/raw/master/state-ab
 rev2 <- semi_join(rev, states)  
 
 to_label <- rev %>% 
-  filter(!is.na(revenue)) %>% 
+  drop_na(revenue) %>% 
   group_by(source) %>% 
   filter(year == max(year)) %>% 
   arrange(desc(revenue)) %>% 
   slice(seq(1, 51, 10))
 
-ggplot(rev, aes(year, revenue)) +
+ggplot(rev2, aes(year, revenue)) +
   geom_line(aes(group = state), 
             alpha = 0.8,
             color = "gray") +
+  facet_wrap(~source) +
   geom_line(aes(group = state), 
             data = semi_join(rev, to_label, by = c("state", "source")),
             size = 1.2,
@@ -93,7 +94,6 @@ ggplot(rev, aes(year, revenue)) +
                   min.segment.length = 0,
                   segment.color = "gray10",
                   color = "gray40") +
-  facet_wrap(~source) +
   theme_minimal(20)
 ```
 
