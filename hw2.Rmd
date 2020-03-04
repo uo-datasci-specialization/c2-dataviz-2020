@@ -1,0 +1,252 @@
+---
+title: "Visualizing uncertainty and creating pretty tables"
+date: "Assigned 2/17/20, Due 3/2/20"
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    theme: "journal"
+    css: "website-custom.css"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE,
+                      warning = FALSE,
+                      echo = FALSE,
+                      dev.args = list(bg="transparent"))
+
+```
+
+## Background
+For this homework we will again use data from [kaggle](https://www.kaggle.com), this time looking at [crime rates in Denver, CO](https://www.kaggle.com/paultimothymooney/denver-crime-data). 
+
+#### Getting Started
+You can download the data we'll use for this homework either [from kaggle](https://www.kaggle.com/paultimothymooney/denver-crime-data) or from canvas. Please visit the aforementioned link for a description of the data. We will be using the `crime.csv` file. Note that if you do download the data directly from kaggle your plots may not match mine exactly, given that the data are updated daily.
+
+## Assignment
+1. Select rows corresponding to a crime and reproduce the following plot. Note that because these are proportion data, I used the following formula to calculate the standard error $\sqrt{(p(1-p) / n}$.
+
+```{r echo = FALSE, fig.height = 10}
+library(tidyverse)
+library(lubridate)
+library(gghighlight)
+library(ungeviz)
+library(dviz.supp)
+theme_set(theme_minimal(15) +
+            theme(plot.title.position = "plot"))
+
+crime <- read_csv(here::here("data", "crime.csv")) %>% 
+  janitor::clean_names()
+
+crime %>% 
+  filter(is_crime == 1) %>% 
+  mutate(offense_category_id = str_to_title(
+    str_replace_all(offense_category_id, "-", " "))
+  ) %>% 
+  group_by(offense_category_id) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(prop = n/sum(n),
+         se = sqrt((prop*(1-prop)) / n),
+         lower = prop + qnorm(0.025)*se,
+         lower = ifelse(lower < 0, 0, lower),
+         upper = prop + qnorm(0.975)*se) %>% 
+  ggplot(aes(fct_reorder(offense_category_id, prop), prop)) +
+    geom_errorbar(aes(ymin =lower, ymax = upper),
+                  width = 0.3,
+                  color = "gray40") +
+    geom_point(color = "#4375D3",
+               size = .8) +
+    coord_flip(expand = FALSE) +
+    scale_y_continuous("Percentage", 
+                       labels = scales::percent,
+                       limits = c(-0.01, .305),
+                       breaks = seq(0, .3, .1)) +
+    labs(x = "",
+         caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
+         title = "Crimes in Denver") 
+``` 
+
+2. Visualize the same relation, but displaying the uncertainty using an alternative method of your choosing.
+
+```{r viz2, eval = FALSE}
+crime %>% 
+  filter(is_crime == 1) %>% 
+  mutate(offense_category_id = str_to_title(
+    gsub("-", " ", offense_category_id))) %>% 
+  group_by(offense_category_id) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(prop = n/sum(n),
+         se = sqrt((prop*(1-prop)) / n),
+         lower = prop + qnorm(0.025)*se,
+         lower = ifelse(lower < 0, 0, lower),
+         upper = prop + qnorm(0.975)*se,
+         offense_category_id = fct_reorder(offense_category_id, prop)) %>% 
+  ggplot(aes(prop, offense_category_id)) +
+    stat_confidence_density(aes(moe = se), 
+                            fill = "#4375D3", 
+                            confidence = pnorm(.5)) +
+    geom_segment(aes(y = as.numeric(offense_category_id) - 0.4, 
+                     yend = as.numeric(offense_category_id) + 0.4, 
+                     x = prop, xend = prop),
+                 color = "#F0FF00",
+                 size = 1.1) +
+    coord_cartesian(expand = FALSE) +
+    scale_x_continuous("Percentage", 
+                       labels = scales::percent,
+                       limits = c(-0.01, .305),
+                       breaks = seq(0, .3, .1)) +
+    labs(y = "",
+         caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
+         title = "Crimes in Denver") 
+```
+
+3. Reproduce the following plot. Use the `reported_date` to extract the year.
+
+```{r viz3}
+smry <- crime %>% 
+  mutate(year = year(mdy_hms(reported_date))) %>% 
+  count(year, district_id) %>% 
+  group_by(year) %>% 
+  mutate(prop = n/sum(n),
+         se = sqrt((prop*(1-prop)) / n),
+         lower = prop + qnorm(0.025)*se,
+         lower = ifelse(lower < 0, 0, lower),
+         upper = prop + qnorm(0.975)*se) %>% 
+  ungroup() %>% 
+  mutate(district_id = fct_reorder(factor(district_id), prop))
+
+ggplot(smry, aes(district_id, prop)) +
+  geom_col(aes(fill = district_id)) +
+  geom_errorbar(aes(ymin = lower, ymax = upper),
+                width = 0.4,
+                color = "gray40") +
+  facet_wrap(~year) +
+  coord_flip() +
+  scale_x_discrete("District") +
+  scale_fill_OkabeIto() +
+  scale_y_continuous("Proportion", limits = c(0, 0.25), breaks = seq(0, .3, .1)) +
+  guides(fill = "none") +
+  labs(caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
+       title = "Crimes in Denver") 
+
+```
+
+
+4. Run the following code and fit the corresponding model. Note, it may take
+a moment to run. 
+
+```{r model, echo = TRUE}
+model_data <- crime %>% 
+  mutate(neighborhood_id = relevel(factor(neighborhood_id), ref = "barnum"))
+
+m <- glm(is_crime ~ neighborhood_id, 
+         data = model_data,
+         family = "binomial")
+```
+
+This model uses neighborhood to predict whether a crime occurred or not. The 
+reference group has been set to the "barnum" neighborhood, and the coefficents 
+are all in comparison to this neighborhood. 
+
+Extract the output using `broom::tidy`
+
+```{r tidy, echo = TRUE}
+tidied <- broom::tidy(m)
+```
+
+Divide the probability space, `[0, 1]`, into even bins of your choosing. For example, for 20 bins I could run the following
+
+```{r ppoints, echo = TRUE}
+ppoints(20)
+```
+
+
+The coefficients (`tidied$estimate`) for each district in the model represent the difference in crime rates between the corresponding neighborhood the Barnum neighborhood. These are reported on a log scale and can be exponentiated to provide the odds. For example the Athmar-Park neighborhood was estimated as `r round(exp(tidied$estimate[2]), 2)` times more likely to have a crim occur than the Barnum neighborhood. This is the point estimate, which is our "best guess" as to the true difference, and the likelihood of alternative differences are distributed around this point with a standard deviation equal to the standard error. We can simulate data from this distribution, if we choose, or instead just use the distribution to calculate different quantiles.  
+
+The `qnorm` function transforms probabilities, such as those we generated with `ppoints`, into values according to some pre-defined normal distribution (by default $\mu = 0, \sigma = 1$). For example `qnorm(.75, mean = 100, sd = 10)` provides the 75th percentile value from a distribution with a mean of 100 and a standard deviation of 10. We can therefore use `qnorm` in conjunction with `ppoints` to better understand the sampling distribution and, ultimately, communicate uncertainty. For example the following code generates the values corresponding to `ppoints(20)`, or 2.5th to 97.5th percentiles of the distributions in 5 percentile "jumps", for the difference in crime rates on the log scale for Barnum and Barnum-West neighborhoods.
+
+```{r qnorm, , echo = TRUE}
+barnum_west <- tidied %>% 
+  filter(term == "neighborhood_idbarnum-west")
+
+qnorm(ppoints(20), 
+      mean = barnum_west$estimate,
+      sd = barnum_west$std.error)
+```
+
+The following plot displays a discretized version of the probability space for the differences in crime between the neighborhoods. Replicate this plot, but comparing the Barnum neighborhood to the Regis neighborhood. Make sure to put the values in a data frame, and create a  new variable stating whether the difference is greater than zero (which you will use to fill by). Note that you do not need to replicate the colors in the subtitle to match the balls, as I have, but if you'd like to you should likely use the [ggtext](https://github.com/wilkelab/ggtext) package.
+
+**Note:** Your probabilities will not directly correspond with the $p$ values, which are essentially twice the probability you are displaying (because the test is two-tailed).
+
+```{r dotplot, fig.height = 7}
+barnum_west <- tidied %>% 
+  filter(term == "neighborhood_idbarnum-west")
+
+
+
+diff_dist_12 <- data.frame(balls = qnorm(ppoints(20), 
+                                         mean = barnum_west$estimate,
+                                         sd = barnum_west$std.error)) %>% 
+  mutate(higher_crime = ifelse(balls < 0, "Barnum West", "Barnum"))
+
+library(ggtext)
+ggplot(diff_dist_12, aes(balls)) +
+  geom_dotplot(aes(fill = higher_crime), binwidth = 0.035) +
+  scale_fill_manual(values = c("#1EB48E", "#8A7D98")) +
+  scale_y_continuous("", 
+                     breaks = NULL, 
+                     expand = c(0, 0)) +
+  scale_x_continuous("Difference in log odds of a crime being committed",
+                     breaks = seq(-0.1, 0.2, .05),
+                     expand = c(0.015, 0.015)) +
+  geom_vline(xintercept = 0, color = "#D04343", size = 2) +
+  labs(title = "Probability of differential crime rates between neighborhoods", 
+       subtitle = "<span style='color:#8A7D98'>**Barnum West** </span>compared to <span style='color:#1EB48E'>**Barnum**</span>",
+       caption = "Each ball represents 5% probability") +
+  guides(fill = "none") +
+  #annotate("text", .11, 0.9, label = "Barnum West", size = 8, color = "gray20") +
+  #annotate("text", -0.05, 0.9, label = "Barnum", size = 8, color = "gray20") +
+  theme(plot.subtitle = element_markdown())
+```
+
+<br/>
+
+5. Reproduce the following table
+
+<br/>
+<br/>
+
+```{r tbl}
+library(gt)
+tbl_data <- crime %>% 
+  filter(offense_category_id == "aggravated-assault" |
+           offense_category_id == "murder" |
+           offense_category_id == "sexual-assault" |
+           offense_category_id == "other-crimes-against-persons") %>% 
+  filter(district_id %in% c(1, 3, 5)) %>% 
+  mutate(offense_category_id = str_replace_all(offense_category_id, "-", " "),
+         offense_category_id = str_to_title(offense_category_id), 
+         offense_category_id = factor(offense_category_id,
+                                      levels = c("Aggravated Assault",
+                                                 "Sexual Assault", 
+                                                 "Murder",
+                                                 "Other Crimes Against Persons"))) %>% 
+  separate(reported_date, c("date", NA, NA), sep = " ") %>% 
+  mutate(year = year(mdy(date))) %>% 
+  count(offense_category_id, district_id, year) %>% 
+  mutate(district_id = paste0("District ", district_id)) %>% 
+  spread(year, n, fill = 0) 
+
+tbl_data %>% 
+  group_by(district_id) %>% 
+  gt() %>% 
+  tab_spanner("Year", 
+              columns = c("2014", "2015", "2016", "2017", "2018", "2019")) %>% 
+  cols_align(align = "left", columns = vars(offense_category_id)) %>% 
+  cols_label(offense_category_id = "Offense") %>% 
+  tab_header(title = "Crimes Against Persons in Denver: 2014 to Present",
+             subtitle = md("*Sample of three districts*")) %>% 
+  tab_source_note(source_note = md("Denver Crime Data Distributed via [Kaggle](https://www.kaggle.com/paultimothymooney/denver-crime-data)"))
+```
