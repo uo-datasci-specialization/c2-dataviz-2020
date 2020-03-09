@@ -38,68 +38,56 @@ theme_set(theme_minimal(15) +
 crime <- read_csv(here::here("data", "crime.csv")) %>% 
   janitor::clean_names()
 
-crime %>% 
+offenses <- crime %>% 
   filter(is_crime == 1) %>% 
   mutate(offense_category_id = str_to_title(
     str_replace_all(offense_category_id, "-", " "))
   ) %>% 
-  group_by(offense_category_id) %>% 
-  count() %>% 
-  ungroup() %>% 
-  mutate(prop = n/sum(n),
-         se = sqrt((prop*(1-prop)) / n),
-         lower = prop + qnorm(0.025)*se,
-         lower = ifelse(lower < 0, 0, lower),
-         upper = prop + qnorm(0.975)*se) %>% 
-  ggplot(aes(fct_reorder(offense_category_id, prop), prop)) +
-    geom_errorbar(aes(ymin =lower, ymax = upper),
-                  width = 0.3,
-                  color = "gray40") +
-    geom_point(color = "#4375D3",
-               size = .8) +
-    coord_flip(expand = FALSE) +
-    scale_y_continuous("Percentage", 
-                       labels = scales::percent,
-                       limits = c(-0.01, .305),
-                       breaks = seq(0, .3, .1)) +
-    labs(x = "",
-         caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
-         title = "Crimes in Denver") 
-``` 
-
-2. Visualize the same relation, but displaying the uncertainty using an alternative method of your choosing.
-
-```{r viz2, eval = FALSE}
-crime %>% 
-  filter(is_crime == 1) %>% 
-  mutate(offense_category_id = str_to_title(
-    gsub("-", " ", offense_category_id))) %>% 
-  group_by(offense_category_id) %>% 
-  count() %>% 
-  ungroup() %>% 
+  count(offense_category_id) %>% 
   mutate(prop = n/sum(n),
          se = sqrt((prop*(1-prop)) / n),
          lower = prop + qnorm(0.025)*se,
          lower = ifelse(lower < 0, 0, lower),
          upper = prop + qnorm(0.975)*se,
-         offense_category_id = fct_reorder(offense_category_id, prop)) %>% 
-  ggplot(aes(prop, offense_category_id)) +
-    stat_confidence_density(aes(moe = se), 
-                            fill = "#4375D3", 
-                            confidence = pnorm(.5)) +
-    geom_segment(aes(y = as.numeric(offense_category_id) - 0.4, 
-                     yend = as.numeric(offense_category_id) + 0.4, 
-                     x = prop, xend = prop),
-                 color = "#F0FF00",
-                 size = 1.1) +
-    coord_cartesian(expand = FALSE) +
-    scale_x_continuous("Percentage", 
-                       labels = scales::percent,
-                       limits = c(-0.01, .305),
-                       breaks = seq(0, .3, .1)) +
-    labs(y = "",
-         caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
-         title = "Crimes in Denver") 
+         offense_category_id = fct_reorder(offense_category_id, prop)) 
+
+ggplot(offenses, aes(offense_category_id, prop)) +
+  geom_errorbar(aes(ymin =lower, ymax = upper),
+                width = 0.3,
+                color = "gray40") +
+  geom_point(color = "#4375D3",
+             size = .8) +
+  coord_flip(expand = FALSE) +
+  scale_y_continuous("Percentage", 
+                     labels = scales::percent,
+                     limits = c(-0.01, .305),
+                     breaks = seq(0, .3, .1)) +
+  labs(x = "",
+       caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
+       title = "Crimes in Denver") 
+``` 
+
+2. Visualize the same relation, but displaying the uncertainty using an alternative method of your choosing.
+
+```{r viz2, eval = FALSE}
+ggplot(offenses, aes(prop, offense_category_id)) +
+  stat_confidence_density(aes(moe = se), 
+                          fill = "#4375D3", 
+                          confidence = pnorm(.5)) +
+  geom_segment(aes(y = as.numeric(offense_category_id) - 0.4, 
+                   yend = as.numeric(offense_category_id) + 0.4, 
+                   x = prop, 
+                   xend = prop),
+               color = "#F0FF00",
+               size = 0.9) +
+  coord_cartesian(expand = FALSE) +
+  scale_x_continuous("Percentage", 
+                     labels = scales::percent,
+                     limits = c(-0.01, .305),
+                     breaks = seq(0, .3, .1)) +
+  labs(y = "",
+       caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
+       title = "Crimes in Denver") 
 ```
 
 3. Reproduce the following plot. Use the `reported_date` to extract the year.
@@ -124,9 +112,11 @@ ggplot(smry, aes(district_id, prop)) +
                 color = "gray40") +
   facet_wrap(~year) +
   coord_flip() +
-  scale_x_discrete("District") +
+  scale_x_discrete(name = "District") +
   scale_fill_OkabeIto() +
-  scale_y_continuous("Proportion", limits = c(0, 0.25), breaks = seq(0, .3, .1)) +
+  scale_y_continuous(name = "Proportion", 
+                     limits = c(0, 0.25), 
+                     breaks = seq(0, .3, .1)) +
   guides(fill = "none") +
   labs(caption = "Denver Crime Data Distributed via Kaggle\nhttps://www.kaggle.com/paultimothymooney/denver-crime-data",
        title = "Crimes in Denver") 
@@ -233,11 +223,12 @@ tbl_data <- crime %>%
                                                  "Sexual Assault", 
                                                  "Murder",
                                                  "Other Crimes Against Persons"))) %>% 
-  separate(reported_date, c("date", NA, NA), sep = " ") %>% 
-  mutate(year = year(mdy(date))) %>% 
+  mutate(year = year(mdy_hms(reported_date))) %>% 
   count(offense_category_id, district_id, year) %>% 
   mutate(district_id = paste0("District ", district_id)) %>% 
-  spread(year, n, fill = 0) 
+  pivot_wider(names_from = year, 
+              values_from = n, 
+              values_fill = list(n = 0)) 
 
 tbl_data %>% 
   group_by(district_id) %>% 
